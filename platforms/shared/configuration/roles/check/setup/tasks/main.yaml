@@ -38,12 +38,12 @@
   when: check == "vault_policies"
 
 # Check if Docker credentials exist already
-- name: Check docker cred exists
-  k8s_info:
-    kind: Secret
-    namespace: "{{ component_name }}"
-    name: "regcred"
-    kubeconfig: "{{ kubernetes.config_file }}"
-    context: "{{ kubernetes.context }}"
-  register: get_regcred
-  when: check == "docker_credentials"
+# - name: Check docker cred exists
+#   k8s_info:
+#     kind: Secret
+#     namespace: "{{ component_name }}"
+#     name: "regcred"
+#     kubeconfig: "{{ kubernetes.config_file }}"
+#     context: "{{ kubernetes.context }}"
+#   register: get_regcred
+#   when: check == "docker_credentials"

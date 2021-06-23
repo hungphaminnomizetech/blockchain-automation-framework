@@ -32,10 +32,10 @@
     tags:
       - aws_auth
 
-  - name: Test Kubernetes connection
-    k8s_info:
-      kind: Pod
-      namespace: default
-      kubeconfig: "{{ kubeconfig_path }}"
-      context: "{{ kubecontext }}"
-    register: pods_default
+  # - name: Test Kubernetes connection
+  #   k8s_info:
+  #     kind: Pod
+  #     namespace: default
+  #     kubeconfig: "{{ kubeconfig_path }}"
+  #     context: "{{ kubecontext }}"
+  #   register: pods_default
