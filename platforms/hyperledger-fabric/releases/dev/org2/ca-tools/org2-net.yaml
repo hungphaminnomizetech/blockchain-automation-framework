@@ -1,0 +1,32 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: org2-net-ca-tools
+  namespace: org2-net
+  annotations:
+    fluxcd.io/automated: "false"
+spec:
+  releaseName: org2-net-ca-tools
+  chart:
+    git: https://github.com/NguyenHoangPhuTien/blockchain-automation-framework.git
+    ref: main
+    path: platforms/hyperledger-fabric/charts/catools
+  values:
+    metadata:
+      namespace: org2-net
+      name: ca-tools
+    annotations:  
+      service:
+        - example1: example2
+      pvc:
+      deployment:
+    replicaCount: 1
+
+    image:
+      repository: hyperledger/fabric-ca-tools
+      tag: 1.2.1
+      pullPolicy: IfNotPresent
+      
+    storage:
+      storageclassname: org2sc
+      storagesize: 512Mi
