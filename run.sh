@@ -12,4 +12,3 @@ KUBECONFIG=/home/tiennguyen/projects/hyperledger/blockchain-automation-framework
 
 echo "Running the playbook..."
 exec ansible-playbook -vv /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/site.yaml --inventory-file=/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/inventory/ -e "@/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/network.yml" -e 'ansible_python_interpreter=/usr/bin/python3'
-
