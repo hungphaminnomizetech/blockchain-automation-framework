@@ -1,0 +1,68 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: org1-peer0
+  namespace: org1-net
+  annotations:
+    fluxcd.io/automated: "false"
+spec:
+  releaseName: org1-peer0
+  chart:
+    git: https://github.com/NguyenHoangPhuTien/blockchain-automation-framework.git
+    ref: main
+    path: platforms/hyperledger-fabric/charts/peernode    
+  values:
+    metadata:
+      namespace: org1-net
+      images:
+        couchdb: couchdb:3.1
+        peer: hyperledger/fabric-peer:2.2.0
+        alpineutils: index.docker.io/hyperledgerlabs/alpine-utils:1.0
+    annotations:  
+      service:
+        - example1: example2
+      pvc:
+      deployment:
+        
+    peer:
+      name: peer0
+      gossippeeraddress: peer0.org1.example.com:7051
+      gossipexternalendpoint: peer0.org1-net.org1.example.com:8443
+      localmspid: org1MSP
+      loglevel: info
+      tlsstatus: true
+      builder: hyperledger/fabric-ccenv:2.2.0
+      couchdb:
+        username: org1-user
+
+    storage:
+      peer:
+        storageclassname: org1sc
+        storagesize: 512Mi
+      couchdb:
+        storageclassname: org1sc
+        storagesize: 1Gi
+
+    vault:
+      role: vault-role
+      address: http://127.0.0.1:8200/
+      authpath: devorg1-net-auth
+      secretprefix: secret/crypto/peerOrganizations/org1-net/peers/peer0.org1-net
+      secretambassador: secret/crypto/peerOrganizations/org1-net/ambassador
+      serviceaccountname: vault-auth
+      imagesecretname: regcred
+      secretcouchdbpass: secret/credentials/org1-net/couchdb/org1?user
+
+    service:
+      servicetype: ClusterIP
+      ports:
+        grpc:
+          clusteripport: 7051
+        events:
+          clusteripport: 7053
+        couchdb:
+          clusteripport: 5984
+          
+    proxy:
+      provider: "haproxy"
+      external_url_suffix: org1.example.com
