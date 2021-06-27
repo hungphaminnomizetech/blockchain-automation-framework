@@ -169,6 +169,6 @@ spec:
         volumeMounts:
         - name: certificates
           mountPath: /etc/hyperledger/fabric-ca-server-config
-          readOnly: true
+          readOnly: false
         - name: ca-server-db
           mountPath: /var/hyperledger/fabric-ca-server/db/
