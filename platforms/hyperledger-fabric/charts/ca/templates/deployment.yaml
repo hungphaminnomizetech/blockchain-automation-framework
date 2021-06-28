@@ -41,7 +41,7 @@ spec:
       volumes:
       - name: ca-server-db
         persistentVolumeClaim:
-          claimName: {{ $.Values.storage.pvc }}
+          claimName: ca-server-db-pvc-org1-net
       - name: certificates
         emptyDir:
           medium: Memory
@@ -92,12 +92,16 @@ spec:
           }
           
           KUBE_SA_TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
-          echo "Getting secrets from Vault Server: ${VAULT_ADDR}"
+          echo "============== KUBE_SA_TOKEN: ${KUBE_SA_TOKEN} ============"
+          echo "============== Getting secrets from Vault Server: ${VAULT_ADDR} =============="
+          echo "============== KUBERNETES_AUTH_PATH: ${KUBERNETES_AUTH_PATH} =============="
+          echo "============== ${VAULT_ADDR}/v1/auth/${KUBERNETES_AUTH_PATH}/login =============="
           # Login to Vault and so I can get an approle token
-          VAULT_CLIENT_TOKEN=$(curl -sS --request POST ${VAULT_ADDR}/v1/auth/${KUBERNETES_AUTH_PATH}/login \
-            -H "Content-Type: application/json" \
-            -d '{"role":"'"${VAULT_APP_ROLE}"'","jwt":"'"${KUBE_SA_TOKEN}"'"}' | \
-            jq -r 'if .errors then . else .auth.client_token end')
+          # VAULT_CLIENT_TOKEN=$(curl -sS --request POST ${VAULT_ADDR}/v1/auth/${KUBERNETES_AUTH_PATH}/login \
+          #   -H "Content-Type: application/json" \
+          #   -d '{"role":"'"${VAULT_APP_ROLE}"'","jwt":"'"${KUBE_SA_TOKEN}"'"}' | \
+          #   jq -r 'if .errors then . else .auth.client_token end')
+          export VAULT_CLIENT_TOKEN="s.mmpTmq4JP2VlgJa1LyDdesLN"
           validateVaultResponse 'vault login token' "${VAULT_CLIENT_TOKEN}"
 
           SECRET_CERT={{ $.Values.vault.secretcert }}
