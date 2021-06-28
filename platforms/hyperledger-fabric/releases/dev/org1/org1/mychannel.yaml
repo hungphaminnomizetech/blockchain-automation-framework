@@ -28,10 +28,10 @@ spec:
 
     vault:
       role: vault-role
-      address: http://192.168.1.11:8200/
+      address: http://192.168.1.11:8200
       authpath: devorg1-net-auth
-      adminsecretprefix: secret/crypto/peerOrganizations/org1-net/users/admin
-      orderersecretprefix: secret/crypto/peerOrganizations/org1-net/orderer 
+      adminsecretprefix: my-secrets/crypto/peerOrganizations/org1-net/users/admin
+      orderersecretprefix: my-secrets/crypto/peerOrganizations/org1-net/orderer 
       serviceaccountname: vault-auth
       imagesecretname: regcred
 
