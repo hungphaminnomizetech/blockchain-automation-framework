@@ -33,7 +33,7 @@ spec:
       storagesize: 512Mi
     vault:
       role: vault-role
-      address: http://127.0.0.1:8200/
+      address: http://192.168.1.11:8200/
       authpath: devorg2-net-auth
       secretcert: secret/crypto/peerOrganizations/org2-net/ca?ca.org2-net-cert.pem
       secretkey: secret/crypto/peerOrganizations/org2-net/ca?org2-net-CA.key
