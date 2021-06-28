@@ -45,13 +45,13 @@ spec:
 
     vault:
       role: vault-role
-      address: http://192.168.1.11:8200/
+      address: http://192.168.1.11:8200
       authpath: devorg2-net-auth
-      secretprefix: secret/crypto/peerOrganizations/org2-net/peers/peer0.org2-net
-      secretambassador: secret/crypto/peerOrganizations/org2-net/ambassador
+      secretprefix: my-secrets/crypto/peerOrganizations/org2-net/peers/peer0.org2-net
+      secretambassador: my-secrets/crypto/peerOrganizations/org2-net/ambassador
       serviceaccountname: vault-auth
       imagesecretname: regcred
-      secretcouchdbpass: secret/credentials/org2-net/couchdb/org2?user
+      secretcouchdbpass: my-secrets/credentials/org2-net/couchdb/org2?user
 
     service:
       servicetype: ClusterIP
