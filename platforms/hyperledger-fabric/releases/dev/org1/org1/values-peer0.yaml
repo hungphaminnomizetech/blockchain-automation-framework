@@ -45,7 +45,7 @@ spec:
 
     vault:
       role: vault-role
-      address: http://127.0.0.1:8200/
+      address: http://192.168.1.11:8200/
       authpath: devorg1-net-auth
       secretprefix: secret/crypto/peerOrganizations/org1-net/peers/peer0.org1-net
       secretambassador: secret/crypto/peerOrganizations/org1-net/ambassador
