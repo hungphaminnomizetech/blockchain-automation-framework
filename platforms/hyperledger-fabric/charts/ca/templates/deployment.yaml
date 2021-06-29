@@ -81,7 +81,7 @@ spec:
             then
               http_code=$(curl -sS -o /dev/null -w "%{http_code}" \
               --header "X-Vault-Token: ${VAULT_CLIENT_TOKEN}" \
-              ${VAULT_ADDR}/v2/${vault_secret_key})
+              ${VAULT_ADDR}/v1/${vault_secret_key})
               curl_response=$?
               if test "$http_code" != "200" ; then
                   echo "Http response code from Vault - $http_code"
@@ -109,6 +109,8 @@ spec:
             -d '{"role":"'"${VAULT_APP_ROLE}"'","jwt":"'"${KUBE_TOKEN}"'"}' | \
             jq -r 'if .errors then . else .auth.client_token end')
           validateVaultResponse 'vault login token' "${VAULT_CLIENT_TOKEN}"
+
+          echo "============== ${VAULT_CLIENT_TOKEN} =============="
 
           SECRET_CERT={{ $.Values.vault.secretcert }}
           vault_secret_key=$(echo ${SECRET_CERT} |awk -F "?" '{print $1}')
