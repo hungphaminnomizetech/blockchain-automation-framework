@@ -1,8 +1,24 @@
 ---
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ .Values.storage.couchdb.pv_name }}
+  labels:
+    type: local
+spec:
+  storageClassName: {{ .Values.storage.couchdb.storageclassname }}
+  capacity:
+    storage: {{ .Values.storage.couchdb.storagesize }}
+  accessModes:
+    - {{ .Values.storage.policy }}
+  hostPath:
+    path: {{ .Values.storage.couchdb.path }}
+
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ .Values.peer.name }}-db-volume
+  name: {{ .Values.storage.couchdb.pvc_name }}
   namespace: {{ .Values.metadata.namespace }}
   labels:
     app.kubernetes.io/name: {{ .Values.peer.name }}-db-volume
@@ -19,20 +35,37 @@ metadata:
     {{- end }}          
 spec:
   accessModes:
-    - ReadWriteOnce
+    - {{ .Values.storage.policy }}
   storageClassName: {{ .Values.storage.couchdb.storageclassname }}
   resources:
     requests:
       storage: {{ .Values.storage.couchdb.storagesize }}
 ---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ .Values.storage.peer.pv_name }}
+  labels:
+    type: local
+spec:
+  storageClassName: {{ .Values.storage.peer.storageclassname }}
+  capacity:
+    storage: {{ .Values.storage.peer.storagesize }}
+  accessModes:
+    - {{ .Values.storage.policy }}
+  hostPath:
+    path: {{ .Values.storage.peer.path }}
+
 ---
+
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ .Values.peer.name }}-peer-volume
+  name: {{ .Values.storage.peer.pvc_name }}
   namespace: {{ .Values.metadata.namespace }}
   labels:
-    app.kubernetes.io/name: {{ .Values.peer.name }}-db-volume
+    app.kubernetes.io/name: {{ .Values.peer.name }}-peer-volume
     helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
     app.kubernetes.io/instance: {{ .Release.Name }}
@@ -46,7 +79,7 @@ metadata:
     {{- end }}          
 spec:
   accessModes:
-    - ReadWriteOnce
+    - {{ .Values.storage.policy }}
   storageClassName: {{ .Values.storage.peer.storageclassname }}
   resources:
     requests:

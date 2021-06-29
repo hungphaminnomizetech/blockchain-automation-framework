@@ -7,5 +7,5 @@ listener "tcp" {
 }
 
 storage "file" {
-  path = "/tmp/vault-data"
+  path = "/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/vault_data"
 }

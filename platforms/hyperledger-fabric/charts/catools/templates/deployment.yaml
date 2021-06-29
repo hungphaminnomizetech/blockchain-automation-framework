@@ -43,7 +43,7 @@ spec:
       volumes:
       - name: ca-tools-pv
         persistentVolumeClaim:
-          claimName: ca-tools-pvc
+          claimName: {{ $.Values.storage.storage_pvc_name }}
       - name: ca-tools-crypto-pv
         persistentVolumeClaim:
-          claimName: ca-tools-crypto-pvc
+          claimName: {{ $.Values.storage.crypto_storage_pvc_name }}
