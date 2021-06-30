@@ -1,0 +1,58 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: org1-orderer2
+  namespace: org1-net
+  annotations:
+    fluxcd.io/automated: "false"
+spec:
+  releaseName: org1-orderer2
+  chart:
+    git: https://github.com/NguyenHoangPhuTien/blockchain-automation-framework.git
+    ref: main
+    path: platforms/hyperledger-fabric/charts/orderernode
+  values:
+    metadata:
+      namespace: org1-net
+      images:
+        orderer: hyperledger/fabric-orderer:2.2.0
+        alpineutils: index.docker.io/hyperledgerlabs/alpine-utils:1.0
+    annotations:  
+      service:
+        - example1: example2
+      pvc:
+      deployment:
+    orderer:
+      name: orderer2
+      loglevel: info
+      localmspid: org1MSP
+      tlsstatus: true
+      keepaliveserverinterval: 10s
+    
+    consensus:
+      name: raft
+
+    storage:
+      storageclassname: org1sc
+      storagesize: 512Mi  
+
+    service:
+      servicetype: ClusterIP
+      ports:
+        grpc:
+          clusteripport: 7050
+
+    vault:
+      address: http://192.168.1.11:8200
+      role: vault-role
+      authpath: devorg1-net-auth
+      secretprefix: my-secrets/crypto/ordererOrganizations/org1-net/orderers/orderer2.org1-net
+      imagesecretname: regcred
+      serviceaccountname: vault-auth
+
+    proxy:
+      provider: haproxy
+      external_url_suffix: org1.example.com
+
+    genesis: |-
+      
