@@ -23,7 +23,7 @@ spec:
     kafka: 
       brokerservicename: broker
       name: kafka
-      replicas: 4    
+      replicas: 1    
     zookeeper: 
       name: zookeeper
       peerservicename: zoo

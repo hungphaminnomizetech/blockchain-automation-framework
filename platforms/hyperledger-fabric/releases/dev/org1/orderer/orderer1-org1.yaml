@@ -54,9 +54,6 @@ spec:
       readinessthreshold: 10
       brokers:
       - kafka-0.broker.org1-net.svc.cluster.local:9092
-      - kafka-1.broker.org1-net.svc.cluster.local:9092
-      - kafka-2.broker.org1-net.svc.cluster.local:9092
-      - kafka-3.broker.org1-net.svc.cluster.local:9092
 
     proxy:
       provider: haproxy
