@@ -59,6 +59,9 @@ spec:
           items:
             - key: genesis.block.base64
               path: genesis.block.base64
+      - name: datadir
+        persistentVolumeClaim:
+          claimName: {{ $.Values.orderer.name }}-pvc 
       initContainers:
       - name: kafka-healthcheck
         image: {{ $.Values.metadata.images.healthcheck }}
@@ -126,6 +129,8 @@ spec:
           value: {{ $.Values.vault.role }}
         - name: MOUNT_PATH
           value: /secret
+        - name: KUBE_TOKEN
+          value: {{ $.Values.vault.token }}
         command: ["sh", "-c"]
         args:
         - |-
@@ -152,12 +157,17 @@ spec:
           }
 
           KUBE_SA_TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
-
+          echo "============== KUBE_SA_TOKEN: ${KUBE_SA_TOKEN} ============"
+          echo "============== KUBE_TOKEN: ${KUBE_TOKEN} ============"
+          echo "============== Getting secrets from Vault Server: ${VAULT_ADDR} =============="
+          echo "============== KUBERNETES_AUTH_PATH: ${KUBERNETES_AUTH_PATH} =============="
+          echo "============== ${VAULT_ADDR}/v1/auth/${KUBERNETES_AUTH_PATH}/login =============="
+          echo "============== ${VAULT_APP_ROLE} =============="
           echo "Getting secrets from Vault Server: ${VAULT_ADDR}"
           # Login to Vault and so I can get an approle token
           VAULT_CLIENT_TOKEN=$(curl -sS --request POST ${VAULT_ADDR}/v1/auth/${KUBERNETES_AUTH_PATH}/login \
             -H "Content-Type: application/json" \
-            -d '{"role":"'"${VAULT_APP_ROLE}"'","jwt":"'"${KUBE_SA_TOKEN}"'"}' | \
+            -d '{"role":"'"${VAULT_APP_ROLE}"'","jwt":"'"${KUBE_TOKEN}"'"}' | \
             jq -r 'if .errors then . else .auth.client_token end')
 
           validateVaultResponse 'vault login token' "${VAULT_CLIENT_TOKEN}"
@@ -229,13 +239,3 @@ spec:
         - name: certificates
           mountPath: /var/hyperledger/orderer/crypto
           readOnly: true
-  volumeClaimTemplates:
-  #Lables are not being taken by Kubernetes as it dynamically creates PVC
-  - metadata:
-      name: datadir    
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      storageClassName: {{ $.Values.storage.storageclassname }}
-      resources:
-        requests:
-          storage: {{ $.Values.storage.storagesize }}
