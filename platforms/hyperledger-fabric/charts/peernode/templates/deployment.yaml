@@ -211,6 +211,8 @@ spec:
         command: ["sh", "-c"]
         args:
         - |-
+          cd /etc/hyperledger/fabric/NodeOUconfig/mspconfig
+          ls -l
           cp /etc/hyperledger/fabric/NodeOUconfig/mspconfig  /etc/hyperledger/fabric/crypto/msp/config.yaml
           export CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=`cat /etc/hyperledger/fabric/crypto/user_cred`
           peer node start
@@ -231,7 +233,7 @@ spec:
           mountPath: /etc/hyperledger/fabric/crypto
         - name: {{ $.Values.peer.name }}-msp-config-volume
           mountPath: /etc/hyperledger/fabric/NodeOUconfig
-          readOnly: true
+          # readOnly: true
       volumes:
       {{ if .Values.vault.tls  }}
       - name: vaultca

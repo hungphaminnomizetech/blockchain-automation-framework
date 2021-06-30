@@ -41,7 +41,7 @@ spec:
       volumes:
       - name: ca-server-db
         persistentVolumeClaim:
-          claimName: ca-server-db-pvc-org1-net
+          claimName: {{ $.Values.storage.pvc_name }}
       - name: certificates
         emptyDir:
           medium: Memory
