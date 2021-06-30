@@ -2,7 +2,7 @@
 
 echo "Create resource role"
 export VAULT_ADDR='http://localhost:8200'
-export VAULT_TOKEN="s.5igqVJytJznmw1NLWtbdzXol"
+export VAULT_TOKEN="s.oftSqAMCwG1GT6c7LUqj7hLH"
 
 echo "Create k8s resource"
 vault auth enable kubernetes 2>&1 >/dev/null
