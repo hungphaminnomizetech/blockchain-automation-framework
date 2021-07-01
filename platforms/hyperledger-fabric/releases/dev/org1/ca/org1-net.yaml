@@ -8,35 +8,34 @@ metadata:
 spec:
   releaseName: org1-net-ca
   chart:
-    git: https://github.com/NguyenHoangPhuTien/blockchain-automation-framework.git
+    git: https://github.com/hungphamqs94/blockchain-automation-framework.git
     ref: main
     path: platforms/hyperledger-fabric/charts/ca    
   values:
-    metadata:
-      namespace: org1-net
-      images:
-        alpineutils: index.docker.io/hyperledgerlabs/alpine-utils:1.0
-        ca: hyperledger/fabric-ca:1.4.8
     deployment:
       annotations:
     annotations:  
       service:
         - example1: example2
       pvc:
-       
+    metadata:
+      namespace: org1-net
+      images:
+        alpineutils: index.docker.io/hyperledgerlabs/alpine-utils:1.0
+        ca: hyperledger/fabric-ca:1.4.8
     server:
       name: ca
       tlsstatus: true
       admin: org1-admin
     storage:
       storageclassname: org1sc
-      storagesize: 512Mi
+      storagesize: 512Mi 
     vault:
       role: vault-role
-      address: http://192.168.1.11:8200
+      address: http://45.32.124.125:8200
       authpath: devorg1-net-auth
-      secretcert: my-secrets/crypto/peerOrganizations/org1-net/ca?ca.org1-net-cert.pem
-      secretkey: my-secrets/crypto/peerOrganizations/org1-net/ca?org1-net-CA.key
+      secretcert: my-secrets/crypto/ordererOrganizations/org1-net/ca?ca.org1-net-cert.pem
+      secretkey: my-secrets/crypto/ordererOrganizations/org1-net/ca?org1-net-CA.key
       secretadminpass: my-secrets/credentials/org1-net/ca/org1?user
       serviceaccountname: vault-auth
       imagesecretname: regcred
@@ -47,5 +46,5 @@ spec:
           port: 7054
     proxy:
       provider: haproxy
-      type: peer
+      type: orderer
       external_url_suffix: org1.example.com
