@@ -1,3 +1,4 @@
+---
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
 metadata:
@@ -9,5 +10,11 @@ roleRef:
   name: system:auth-delegator
 subjects:
 - kind: ServiceAccount
+  name: vault-reviewer
+  namespace: org1-net
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
   name: vault-reviewer
   namespace: org1-net
