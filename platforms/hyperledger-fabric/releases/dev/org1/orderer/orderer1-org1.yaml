@@ -8,7 +8,7 @@ metadata:
 spec:
   releaseName: org1-orderer1
   chart:
-    git: https://github.com/NguyenHoangPhuTien/blockchain-automation-framework.git
+    git: https://github.com/hungphamqs94/blockchain-automation-framework.git
     ref: main
     path: platforms/hyperledger-fabric/charts/orderernode
   values:
@@ -43,7 +43,7 @@ spec:
           clusteripport: 7050
 
     vault:
-      address: http://192.168.1.11:8200
+      address: http://45.32.124.125:8200
       role: vault-role
       authpath: devorg1-net-auth
       secretprefix: my-secrets/crypto/ordererOrganizations/org1-net/orderers/orderer1.org1-net
@@ -54,6 +54,9 @@ spec:
       readinessthreshold: 10
       brokers:
       - kafka-0.broker.org1-net.svc.cluster.local:9092
+      - kafka-1.broker.org1-net.svc.cluster.local:9092
+      - kafka-2.broker.org1-net.svc.cluster.local:9092
+      - kafka-3.broker.org1-net.svc.cluster.local:9092
 
     proxy:
       provider: haproxy

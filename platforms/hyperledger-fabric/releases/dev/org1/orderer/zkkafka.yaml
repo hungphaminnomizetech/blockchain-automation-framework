@@ -8,7 +8,7 @@ metadata:
 spec:
   releaseName: zkkafka-org1-orderer
   chart:
-    git: https://github.com/NguyenHoangPhuTien/blockchain-automation-framework.git
+    git: https://github.com/hungphamqs94/blockchain-automation-framework.git
     ref: main
     path: platforms/hyperledger-fabric/charts/zkkafka    
   values:
@@ -23,7 +23,7 @@ spec:
     kafka: 
       brokerservicename: broker
       name: kafka
-      replicas: 1    
+      replicas: 4    
     zookeeper: 
       name: zookeeper
       peerservicename: zoo
