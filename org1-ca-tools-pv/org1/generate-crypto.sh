@@ -9,7 +9,7 @@ ALTERNATIVE_ORG_NAMES=("org1.example.com")
 ORG_NAME="org1"
 SUBJECT="C=UK,ST=London,L=London,O=org1"
 SUBJECT_PEER="O=Orderer,L=51.50/-0.13/London,C=GB"
-CA="ca.org1.example.com:8443"
+CA="ca.org1.example.com:7054"
 CA_ADMIN_USER="${ORG_NAME}-admin"
 CA_ADMIN_PASS="${ORG_NAME}-adminpw"
 
@@ -24,11 +24,11 @@ CAS_FOLDER="${HOME}/ca-tools/cas/ca-${ORG_NAME}"
 ORG_HOME="${HOME}/ca-tools/${ORG_NAME}"
 
 ## Register and enroll node and populate its MSP folder
-PEER="orderer1.${FULLY_QUALIFIED_ORG_NAME}"
+PEER="orderer2.${FULLY_QUALIFIED_ORG_NAME}"
 CSR_HOSTS=${PEER}
 for i in "${ALTERNATIVE_ORG_NAMES[@]}"
 do
-	CSR_HOSTS="${CSR_HOSTS},orderer1.${i}"
+	CSR_HOSTS="${CSR_HOSTS},orderer2.${i}"
 done
 echo "Registering and enrolling $PEER with csr hosts ${CSR_HOSTS}"
 
