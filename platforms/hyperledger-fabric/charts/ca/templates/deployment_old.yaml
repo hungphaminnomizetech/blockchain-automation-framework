@@ -41,7 +41,7 @@ spec:
       volumes:
       - name: ca-server-db
         persistentVolumeClaim:
-          claimName: ca-server-db-pvc
+          claimName: {{ $.Values.storage.pvc_name }}
       - name: certificates
         emptyDir:
           medium: Memory
@@ -66,6 +66,8 @@ spec:
           value: {{ $.Values.vault.role }}
         - name: MOUNT_PATH
           value: /secret
+        - name: KUBE_TOKEN
+          value: {{ $.Values.vault.token }}
         command: ["sh", "-c"]
         args:
         - |-
@@ -92,17 +94,30 @@ spec:
           }
           
           KUBE_SA_TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
-          echo "Getting secrets from Vault Server: ${VAULT_ADDR}"
+          echo "============== KUBE_SA_TOKEN: ${KUBE_SA_TOKEN} ============"
+          echo "============== KUBE_TOKEN: ${KUBE_TOKEN} ============"
+          echo "============== Getting secrets from Vault Server: ${VAULT_ADDR} =============="
+          echo "============== KUBERNETES_AUTH_PATH: ${KUBERNETES_AUTH_PATH} =============="
+          echo "============== ${VAULT_ADDR}/v1/auth/${KUBERNETES_AUTH_PATH}/login =============="
+          echo "============== ${VAULT_APP_ROLE} =============="
+          echo "============== -sS --request POST ${VAULT_ADDR}/v1/auth/${KUBERNETES_AUTH_PATH}/login \
+            -H "Content-Type: application/json" \
+            -d '{"role":"'"${VAULT_APP_ROLE}"'","jwt":"'"${KUBE_TOKEN}"'"}'"
           # Login to Vault and so I can get an approle token
           VAULT_CLIENT_TOKEN=$(curl -sS --request POST ${VAULT_ADDR}/v1/auth/${KUBERNETES_AUTH_PATH}/login \
             -H "Content-Type: application/json" \
-            -d '{"role":"'"${VAULT_APP_ROLE}"'","jwt":"'"${KUBE_SA_TOKEN}"'"}' | \
+            -d '{"role":"'"${VAULT_APP_ROLE}"'","jwt":"'"${KUBE_TOKEN}"'"}' | \
             jq -r 'if .errors then . else .auth.client_token end')
           validateVaultResponse 'vault login token' "${VAULT_CLIENT_TOKEN}"
+
+          echo "============== ${VAULT_CLIENT_TOKEN} =============="
 
           SECRET_CERT={{ $.Values.vault.secretcert }}
           vault_secret_key=$(echo ${SECRET_CERT} |awk -F "?" '{print $1}')
           vault_data_key=$(echo ${SECRET_CERT} |awk -F "?" '{print $2}')
+          echo "============== ${SECRET_CERT} =========="
+          echo "============== ${vault_secret_key} =========="
+          echo "============== ${vault_data_key} =========="
           LOOKUP_SECRET_RESPONSE=$(curl -sS \
               --header "X-Vault-Token: ${VAULT_CLIENT_TOKEN}" \
               ${VAULT_ADDR}/v1/${vault_secret_key} | \
@@ -114,6 +129,9 @@ spec:
           SECRET_KEY={{ $.Values.vault.secretkey }}
           vault_secret_key=$(echo ${SECRET_KEY} |awk -F "?" '{print $1}')
           vault_data_key=$(echo ${SECRET_KEY} |awk -F "?" '{print $2}')
+          echo "============== ${SECRET_CERT} =========="
+          echo "============== ${vault_secret_key} =========="
+          echo "============== ${vault_data_key} =========="
           LOOKUP_SECRET_RESPONSE=$(curl -sS \
               --header "X-Vault-Token: ${VAULT_CLIENT_TOKEN}" \
               ${VAULT_ADDR}/v1/${vault_secret_key} | \
@@ -126,6 +144,9 @@ spec:
           SECRET_ADMIN_PASS={{ $.Values.vault.secretadminpass }}
           vault_secret_key=$(echo ${SECRET_ADMIN_PASS} |awk -F "?" '{print $1}')
           vault_data_key=$(echo ${SECRET_ADMIN_PASS} |awk -F "?" '{print $2}')
+          echo "============== ${SECRET_ADMIN_PASS} =========="
+          echo "============== ${vault_secret_key} =========="
+          echo "============== ${vault_data_key} =========="
           LOOKUP_SECRET_RESPONSE=$(curl -sS \
               --header "X-Vault-Token: ${VAULT_CLIENT_TOKEN}" \
           ${VAULT_ADDR}/v1/${vault_secret_key} | jq -r 'if .errors then . else . end')
@@ -169,6 +190,6 @@ spec:
         volumeMounts:
         - name: certificates
           mountPath: /etc/hyperledger/fabric-ca-server-config
-          readOnly: true
+          readOnly: false
         - name: ca-server-db
           mountPath: /var/hyperledger/fabric-ca-server/db/
