@@ -1,0 +1,42 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ $.Values.orderer.name }}-pv
+  labels:
+    type: local
+spec:
+  storageClassName: {{ $.Values.orderer.name }}-sc
+  capacity:
+    storage: {{ .Values.storage.storagesize }}
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: {{ .Values.storage.path }}
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ $.Values.orderer.name }}-pvc
+  namespace: {{ .Values.metadata.namespace }}
+  labels:
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  annotations:
+    {{- if $.Values.annotations }}
+    {{- range $key, $value := $.Values.annotations.pvc }}
+    {{- range $k, $v := $value }}
+      {{ $k }}: {{ $v | quote }}
+    {{- end }}
+    {{- end }}
+    {{- end }}          
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: {{ $.Values.orderer.name }}-sc
+  resources:
+    requests:
+      storage: {{ .Values.storage.storagesize }}
+---
