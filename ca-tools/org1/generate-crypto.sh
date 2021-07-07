@@ -9,7 +9,7 @@ ALTERNATIVE_ORG_NAMES=("org1.example.com")
 ORG_NAME="org1"
 SUBJECT="C=UK,ST=London,L=London,O=org1"
 SUBJECT_PEER="O=Orderer,L=51.50/-0.13/London,C=GB"
-CA="ca.org1-net.com:7054"
+CA="ca.example.com:7054"
 CA_ADMIN_USER="${ORG_NAME}-admin"
 CA_ADMIN_PASS="${ORG_NAME}-adminpw"
 
