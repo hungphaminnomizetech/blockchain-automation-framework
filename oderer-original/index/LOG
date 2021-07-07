@@ -3339,3 +3339,12 @@
 02:14:03.493783 version@stat F·[0 1] S·177B[0B 177B] Sc·[0.00 0.00]
 02:14:03.495747 db@janitor F·3 G·0
 02:14:03.495777 db@open done T·10.140548ms
+=============== Jul 7, 2021 (UTC) ===============
+02:19:04.503140 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+02:19:04.503429 version@stat F·[0 1] S·177B[0B 177B] Sc·[0.00 0.00]
+02:19:04.503466 db@open opening
+02:19:04.503558 journal@recovery F·1
+02:19:04.507318 journal@recovery recovering @740
+02:19:04.511756 version@stat F·[0 1] S·177B[0B 177B] Sc·[0.00 0.00]
+02:19:04.522954 db@janitor F·3 G·0
+02:19:04.523000 db@open done T·19.526753ms
