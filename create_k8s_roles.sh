@@ -2,7 +2,7 @@
 
 echo "Create resource role"
 export VAULT_ADDR='http://localhost:8200'
-export VAULT_TOKEN="s.oftSqAMCwG1GT6c7LUqj7hLH"
+export VAULT_TOKEN="s.VQsR0ahXDL7CmiYcYf0k0wXe"
 
 echo "Create k8s resource"
 vault auth enable kubernetes 2>&1 >/dev/null
@@ -23,7 +23,7 @@ export SA_CA_CRT=$(kubectl get secret $VAULT_SA_NAME \
 echo "Vault update K8s config"
 vault write auth/kubernetes/config \
     token_reviewer_jwt="$SA_JWT_TOKEN" \
-    kubernetes_host="https://192.168.1.11:6443" \
+    kubernetes_host="https://45.32.124.125:6443" \
     kubernetes_ca_cert="$SA_CA_CRT"
 
 echo "Vault create K8s role"
@@ -33,6 +33,6 @@ vault write auth/kubernetes/role/vault-test \
         policies=vault-crypto-org-org1-net-ro \
         ttl=24h
 
-curl -sS --request POST http://192.168.1.11:8200/v1/auth/kubernetes/login \
+curl -sS --request POST http://45.32.124.125:8200/v1/auth/kubernetes/login \
   -H "Content-Type: application/json" \
   -d '{"role":"vault-test","jwt":"'"$SA_JWT_TOKEN"'"}'
