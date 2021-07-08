@@ -1,0 +1,464 @@
+Starting build process...
+Adding env variables...
+Running the playbook...
+ansible-playbook 2.9.23
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 2.7.17 (default, Feb 27 2021, 15:10:58) [GCC 7.5.0]
+Using /etc/ansible/ansible.cfg as config file
+Skipping callback 'actionable', as we already have a stdout callback.
+Skipping callback 'counter_enabled', as we already have a stdout callback.
+Skipping callback 'debug', as we already have a stdout callback.
+Skipping callback 'dense', as we already have a stdout callback.
+Skipping callback 'dense', as we already have a stdout callback.
+Skipping callback 'full_skip', as we already have a stdout callback.
+Skipping callback 'json', as we already have a stdout callback.
+Skipping callback 'minimal', as we already have a stdout callback.
+Skipping callback 'null', as we already have a stdout callback.
+Skipping callback 'oneline', as we already have a stdout callback.
+Skipping callback 'selective', as we already have a stdout callback.
+Skipping callback 'skippy', as we already have a stdout callback.
+Skipping callback 'stderr', as we already have a stdout callback.
+Skipping callback 'unixy', as we already have a stdout callback.
+Skipping callback 'yaml', as we already have a stdout callback.
+
+PLAYBOOK: site.yaml ************************************************************
+16 plays in /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/site.yaml
+
+PLAY [all] *********************************************************************
+META: ran handlers
+META: ran handlers
+META: ran handlers
+
+PLAY [ansible_provisioners] ****************************************************
+
+TASK [Gathering Facts] *********************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/environment-setup.yaml:7
+ok: [localhost]
+META: ran handlers
+
+TASK [include_role : setup/kubectl] ********************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/environment-setup.yaml:11
+
+TASK [setup/kubectl : register temporary directory] ****************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/kubectl/tasks/main.yaml:2
+changed: [localhost] => {"changed": true, "gid": 0, "group": "root", "mode": "0700", "owner": "root", "path": "/tmp/ansible.0m764vav", "size": 4096, "state": "directory", "uid": 0}
+
+TASK [setup/kubectl : check kubectl] *******************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/kubectl/tasks/main.yaml:9
+ok: [localhost] => {"changed": false, "stat": {"atime": 1625732109.5056047, "attr_flags": "e", "attributes": ["extents"], "block_size": 4096, "blocks": 83904, "charset": "binary", "checksum": "95a29cd56f71a4f203d6c046db30c1bf7901243c", "ctime": 1625108802.4918783, "dev": 64513, "device_type": 0, "executable": true, "exists": true, "gid": 0, "gr_name": "root", "inode": 2061585, "isblk": false, "ischr": false, "isdir": false, "isfifo": false, "isgid": false, "islnk": false, "isreg": true, "issock": false, "isuid": false, "mimetype": "application/x-executable", "mode": "0755", "mtime": 1594831817.0, "nlink": 1, "path": "/root/bin/kubectl", "pw_name": "root", "readable": true, "rgrp": true, "roth": true, "rusr": true, "size": 42958848, "uid": 0, "version": "174362294", "wgrp": false, "woth": false, "writeable": true, "wusr": true, "xgrp": true, "xoth": true, "xusr": true}}
+
+TASK [setup/kubectl : Download kubectl binary] *********************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/kubectl/tasks/main.yaml:16
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/kubectl : Unarchive kubernetes-client] *****************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/kubectl/tasks/main.yaml:25
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/kubectl : create bin directory] ************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/kubectl/tasks/main.yaml:33
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/kubectl : Copy kubectl binary to destination directory] ************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/kubectl/tasks/main.yaml:41
+skipping: [localhost] => (item=kubectl)  => {"ansible_loop_var": "bin_item", "bin_item": "kubectl", "changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/kubectl : Test kubectl installation] *******************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/kubectl/tasks/main.yaml:55
+ok: [localhost] => {"changed": false, "cmd": ["kubectl", "version", "--client", "--short"], "delta": "0:00:00.135419", "end": "2021-07-08 23:54:05.998780", "rc": 0, "start": "2021-07-08 23:54:05.863361", "stderr": "", "stderr_lines": [], "stdout": "Client Version: v1.16.13", "stdout_lines": ["Client Version: v1.16.13"]}
+
+TASK [setup/kubectl : Changing the current context namespace to default] *******
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/kubectl/tasks/main.yaml:61
+changed: [localhost] => {"changed": true, "cmd": "KUBECONFIG=/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/config kubectl config set-context --current --namespace=default\n", "delta": "0:00:00.105454", "end": "2021-07-08 23:54:06.411626", "rc": 0, "start": "2021-07-08 23:54:06.306172", "stderr": "", "stderr_lines": [], "stdout": "Context \"kubernetes-admin@kubernetes\" modified.", "stdout_lines": ["Context \"kubernetes-admin@kubernetes\" modified."]}
+
+TASK [include_role : setup/helm] ***********************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/environment-setup.yaml:21
+
+TASK [setup/helm : register temporary directory] *******************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/helm/tasks/main.yaml:2
+changed: [localhost] => {"changed": true, "gid": 0, "group": "root", "mode": "0700", "owner": "root", "path": "/tmp/ansible.hq64y6ad", "size": 4096, "state": "directory", "uid": 0}
+
+TASK [setup/helm : check helm] *************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/helm/tasks/main.yaml:9
+ok: [localhost] => {"changed": false, "stat": {"atime": 1625732111.9615624, "attr_flags": "e", "attributes": ["extents"], "block_size": 4096, "blocks": 78864, "charset": "binary", "checksum": "9fb983829678b1159f74420b5007fbb5e13b3e6f", "ctime": 1625108947.8362136, "dev": 64513, "device_type": 0, "executable": true, "exists": true, "gid": 0, "gr_name": "root", "inode": 2061577, "isblk": false, "ischr": false, "isdir": false, "isfifo": false, "isgid": false, "islnk": false, "isreg": true, "issock": false, "isuid": false, "mimetype": "application/x-executable", "mode": "0755", "mtime": 1625108947.456213, "nlink": 1, "path": "/root/bin/helm", "pw_name": "root", "readable": true, "rgrp": true, "roth": true, "rusr": true, "size": 40378368, "uid": 0, "version": "2384026581", "wgrp": false, "woth": false, "writeable": true, "wusr": true, "xgrp": true, "xoth": true, "xusr": true}}
+
+TASK [setup/helm : Install helm] ***********************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/helm/tasks/main.yaml:16
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/helm : Unzip helm archive] *****************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/helm/tasks/main.yaml:27
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [create bin directory] ****************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/helm/tasks/main.yaml:37
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/helm : Move helm binaries] *****************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/helm/tasks/main.yaml:47
+skipping: [localhost] => (item=helm)  => {"ansible_loop_var": "bin_item", "bin_item": "helm", "changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/helm : Test helm installation] *************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/helm/tasks/main.yaml:58
+ok: [localhost] => {"changed": false, "cmd": ["helm", "version", "--client", "--short"], "delta": "0:00:00.072877", "end": "2021-07-08 23:54:07.872007", "rc": 0, "start": "2021-07-08 23:54:07.799130", "stderr": "", "stderr_lines": [], "stdout": "v3.2.4+g0ad800e", "stdout_lines": ["v3.2.4+g0ad800e"]}
+
+TASK [include_role : setup/vault] **********************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/environment-setup.yaml:31
+
+TASK [setup/vault : register temporary directory] ******************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/vault/tasks/main.yaml:2
+changed: [localhost] => {"changed": true, "gid": 0, "group": "root", "mode": "0700", "owner": "root", "path": "/tmp/ansible.purvcqzd", "size": 4096, "state": "directory", "uid": 0}
+
+TASK [setup/vault : check vault] ***********************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/vault/tasks/main.yaml:9
+ok: [localhost] => {"changed": false, "stat": {"atime": 1625732113.8655298, "attr_flags": "e", "attributes": ["extents"], "block_size": 4096, "blocks": 384304, "charset": "binary", "checksum": "d60b0419118e38b4b95d94f95e01c9a87aa8a7da", "ctime": 1625108994.86431, "dev": 64513, "device_type": 0, "executable": true, "exists": true, "gid": 0, "gr_name": "root", "inode": 2061611, "isblk": false, "ischr": false, "isdir": false, "isfifo": false, "isgid": false, "islnk": false, "isreg": true, "issock": false, "isuid": false, "mimetype": "application/x-executable", "mode": "0755", "mtime": 1616556477.0, "nlink": 1, "path": "/root/bin/vault", "pw_name": "root", "readable": true, "rgrp": true, "roth": true, "rusr": true, "size": 196759170, "uid": 0, "version": "3819042894", "wgrp": false, "woth": false, "writeable": true, "wusr": true, "xgrp": true, "xoth": true, "xusr": true}}
+
+TASK [setup/vault : Install vault client] **************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/vault/tasks/main.yaml:16
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/vault : create bin directory] **************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/vault/tasks/main.yaml:26
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/vault : Unzip vault archive] ***************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/vault/tasks/main.yaml:34
+skipping: [localhost] => (item=vault)  => {"ansible_loop_var": "bin_item", "bin_item": "vault", "changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/vault : Test vault installation] ***********************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/vault/tasks/main.yaml:46
+ok: [localhost] => {"changed": false, "cmd": ["vault", "version"], "delta": "0:00:00.141418", "end": "2021-07-08 23:54:09.635848", "rc": 0, "start": "2021-07-08 23:54:09.494430", "stderr": "", "stderr_lines": [], "stdout": "Vault v1.7.0 (4e222b85c40a810b74400ee3c54449479e32bb9f)", "stdout_lines": ["Vault v1.7.0 (4e222b85c40a810b74400ee3c54449479e32bb9f)"]}
+
+TASK [include_role : setup/aws-cli] ********************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/environment-setup.yaml:41
+skipping: [localhost] => (item={u'ca_data': {u'url': u'ca.org1.example.com:7054', u'certificate': u'/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/org1.crt'}, u'gitops': {u'username': u'hungphamqs94', u'private_key': u'/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/gitops', u'git_protocol': u'https', u'chart_source': u'platforms/hyperledger-fabric/charts', u'git_url': u'https://github.com/hungphamqs94/blockchain-automation-framework.git', u'branch': u'main', u'release_dir': u'platforms/hyperledger-fabric/releases/dev', u'password': u'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', u'email': u'cogangsekhongthua1994@gmail.com', u'git_repo': u'github.com/hungphamqs94/blockchain-automation-framework.git'}, u'cloud_provider': u'minikube', u'name': u'Org1', u'country': u'UK', u'org_status': u'new', u'external_url_suffix': u'org1.example.com', u'state': u'London', u'location': u'London', u'vault': {u'url': u'http://45.32.124.125:8200', u'root_token': u's.VQsR0ahXDL7CmiYcYf0k0wXe', u'secret_path': u'my-secrets'}, u'services': {u'consensus': {u'grpc': {u'port': 9092}, u'type': u'broker', u'name': u'kafka', u'replicas': 4}, u'ca': {u'grpc': {u'port': 7054}, u'type': u'ca', u'name': u'ca', u'subject': u'/C=US/ST=New York/L=New York/O=Store/CN=ca.store-net'}, u'orderers': [{u'consensus': u'kafka', u'grpc': {u'port': 7050}, u'orderer': None, u'type': u'orderer', u'name': u'orderer1'}, {u'consensus': u'raft', u'grpc': {u'port': 7050}, u'orderer': None, u'type': u'orderer', u'name': u'orderer2'}]}, u'organization': None, u'k8s': {u'config_file': u'/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/config', u'context': u'kubernetes-admin@kubernetes'}, u'type': u'orderer', u'subject': u'O=Orderer,L=51.50/-0.13/London,C=GB'})  => {"ansible_loop_var": "item", "changed": false, "item": {"ca_data": {"certificate": "/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/org1.crt", "url": "ca.org1.example.com:7054"}, "cloud_provider": "minikube", "country": "UK", "external_url_suffix": "org1.example.com", "gitops": {"branch": "main", "chart_source": "platforms/hyperledger-fabric/charts", "email": "cogangsekhongthua1994@gmail.com", "git_protocol": "https", "git_repo": "github.com/hungphamqs94/blockchain-automation-framework.git", "git_url": "https://github.com/hungphamqs94/blockchain-automation-framework.git", "password": "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", "private_key": "/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/gitops", "release_dir": "platforms/hyperledger-fabric/releases/dev", "username": "hungphamqs94"}, "k8s": {"config_file": "/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/config", "context": "kubernetes-admin@kubernetes"}, "location": "London", "name": "Org1", "org_status": "new", "organization": null, "services": {"ca": {"grpc": {"port": 7054}, "name": "ca", "subject": "/C=US/ST=New York/L=New York/O=Store/CN=ca.store-net", "type": "ca"}, "consensus": {"grpc": {"port": 9092}, "name": "kafka", "replicas": 4, "type": "broker"}, "orderers": [{"consensus": "kafka", "grpc": {"port": 7050}, "name": "orderer1", "orderer": null, "type": "orderer"}, {"consensus": "raft", "grpc": {"port": 7050}, "name": "orderer2", "orderer": null, "type": "orderer"}]}, "state": "London", "subject": "O=Orderer,L=51.50/-0.13/London,C=GB", "type": "orderer", "vault": {"root_token": "s.VQsR0ahXDL7CmiYcYf0k0wXe", "secret_path": "my-secrets", "url": "http://45.32.124.125:8200"}}, "skip_reason": "Conditional result was False"}
+
+TASK [include_role : setup/aws-auth] *******************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/environment-setup.yaml:50
+skipping: [localhost] => (item={u'ca_data': {u'url': u'ca.org1.example.com:7054', u'certificate': u'/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/org1.crt'}, u'gitops': {u'username': u'hungphamqs94', u'private_key': u'/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/gitops', u'git_protocol': u'https', u'chart_source': u'platforms/hyperledger-fabric/charts', u'git_url': u'https://github.com/hungphamqs94/blockchain-automation-framework.git', u'branch': u'main', u'release_dir': u'platforms/hyperledger-fabric/releases/dev', u'password': u'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', u'email': u'cogangsekhongthua1994@gmail.com', u'git_repo': u'github.com/hungphamqs94/blockchain-automation-framework.git'}, u'cloud_provider': u'minikube', u'name': u'Org1', u'country': u'UK', u'org_status': u'new', u'external_url_suffix': u'org1.example.com', u'state': u'London', u'location': u'London', u'vault': {u'url': u'http://45.32.124.125:8200', u'root_token': u's.VQsR0ahXDL7CmiYcYf0k0wXe', u'secret_path': u'my-secrets'}, u'services': {u'consensus': {u'grpc': {u'port': 9092}, u'type': u'broker', u'name': u'kafka', u'replicas': 4}, u'ca': {u'grpc': {u'port': 7054}, u'type': u'ca', u'name': u'ca', u'subject': u'/C=US/ST=New York/L=New York/O=Store/CN=ca.store-net'}, u'orderers': [{u'consensus': u'kafka', u'grpc': {u'port': 7050}, u'orderer': None, u'type': u'orderer', u'name': u'orderer1'}, {u'consensus': u'raft', u'grpc': {u'port': 7050}, u'orderer': None, u'type': u'orderer', u'name': u'orderer2'}]}, u'organization': None, u'k8s': {u'config_file': u'/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/config', u'context': u'kubernetes-admin@kubernetes'}, u'type': u'orderer', u'subject': u'O=Orderer,L=51.50/-0.13/London,C=GB'})  => {"ansible_loop_var": "item", "changed": false, "item": {"ca_data": {"certificate": "/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/org1.crt", "url": "ca.org1.example.com:7054"}, "cloud_provider": "minikube", "country": "UK", "external_url_suffix": "org1.example.com", "gitops": {"branch": "main", "chart_source": "platforms/hyperledger-fabric/charts", "email": "cogangsekhongthua1994@gmail.com", "git_protocol": "https", "git_repo": "github.com/hungphamqs94/blockchain-automation-framework.git", "git_url": "https://github.com/hungphamqs94/blockchain-automation-framework.git", "password": "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", "private_key": "/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/gitops", "release_dir": "platforms/hyperledger-fabric/releases/dev", "username": "hungphamqs94"}, "k8s": {"config_file": "/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/config", "context": "kubernetes-admin@kubernetes"}, "location": "London", "name": "Org1", "org_status": "new", "organization": null, "services": {"ca": {"grpc": {"port": 7054}, "name": "ca", "subject": "/C=US/ST=New York/L=New York/O=Store/CN=ca.store-net", "type": "ca"}, "consensus": {"grpc": {"port": 9092}, "name": "kafka", "replicas": 4, "type": "broker"}, "orderers": [{"consensus": "kafka", "grpc": {"port": 7050}, "name": "orderer1", "orderer": null, "type": "orderer"}, {"consensus": "raft", "grpc": {"port": 7050}, "name": "orderer2", "orderer": null, "type": "orderer"}]}, "state": "London", "subject": "O=Orderer,L=51.50/-0.13/London,C=GB", "type": "orderer", "vault": {"root_token": "s.VQsR0ahXDL7CmiYcYf0k0wXe", "secret_path": "my-secrets", "url": "http://45.32.124.125:8200"}}, "skip_reason": "Conditional result was False"}
+META: ran handlers
+META: ran handlers
+
+PLAY [ansible_provisioners] ****************************************************
+META: ran handlers
+
+TASK [include_role : setup/flux] ***********************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/kubernetes-env-setup.yaml:12
+
+TASK [aws-cli : register temporary directory] **********************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/aws-cli/tasks/main.yaml:2
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [aws-cli : check aws cli] *************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/aws-cli/tasks/main.yaml:9
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [aws-cli : download aws cli] **********************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/aws-cli/tasks/main.yaml:16
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [aws-cli : extract aws cli] ***********************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/aws-cli/tasks/main.yaml:25
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [create bin directory] ****************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/aws-cli/tasks/main.yaml:34
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [aws-cli : install aws cli] ***********************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/aws-cli/tasks/main.yaml:44
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [aws-cli : configuring aws] ***********************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/aws-cli/tasks/main.yaml:52
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [aws-auth : register temporary directory] *********************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/aws-auth/tasks/main.yaml:2
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [check aws-authenticator] *************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/aws-auth/tasks/main.yaml:9
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [aws-auth : create bin directory] *****************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/aws-auth/tasks/main.yaml:16
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [Install aws-authenticator] ***********************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/aws-auth/tasks/main.yaml:24
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [helm : register temporary directory] *************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/helm/tasks/main.yaml:2
+changed: [localhost] => {"changed": true, "gid": 0, "group": "root", "mode": "0700", "owner": "root", "path": "/tmp/ansible.cptnqw_5", "size": 4096, "state": "directory", "uid": 0}
+
+TASK [check helm] **************************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/helm/tasks/main.yaml:9
+ok: [localhost] => {"changed": false, "stat": {"atime": 1625732111.9615624, "attr_flags": "e", "attributes": ["extents"], "block_size": 4096, "blocks": 78864, "charset": "binary", "checksum": "9fb983829678b1159f74420b5007fbb5e13b3e6f", "ctime": 1625108947.8362136, "dev": 64513, "device_type": 0, "executable": true, "exists": true, "gid": 0, "gr_name": "root", "inode": 2061577, "isblk": false, "ischr": false, "isdir": false, "isfifo": false, "isgid": false, "islnk": false, "isreg": true, "issock": false, "isuid": false, "mimetype": "application/x-executable", "mode": "0755", "mtime": 1625108947.456213, "nlink": 1, "path": "/root/bin/helm", "pw_name": "root", "readable": true, "rgrp": true, "roth": true, "rusr": true, "size": 40378368, "uid": 0, "version": "2384026581", "wgrp": false, "woth": false, "writeable": true, "wusr": true, "xgrp": true, "xoth": true, "xusr": true}}
+
+TASK [Install helm] ************************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/helm/tasks/main.yaml:16
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [Unzip helm archive] ******************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/helm/tasks/main.yaml:27
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [create bin directory] ****************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/helm/tasks/main.yaml:37
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [Move helm binaries] ******************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/helm/tasks/main.yaml:47
+skipping: [localhost] => (item=helm)  => {"ansible_loop_var": "bin_item", "bin_item": "helm", "changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [Test helm installation] **************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/helm/tasks/main.yaml:58
+ok: [localhost] => {"changed": false, "cmd": ["helm", "version", "--client", "--short"], "delta": "0:00:00.091101", "end": "2021-07-08 23:54:12.304040", "rc": 0, "start": "2021-07-08 23:54:12.212939", "stderr": "", "stderr_lines": [], "stdout": "v3.2.4+g0ad800e", "stdout_lines": ["v3.2.4+g0ad800e"]}
+
+TASK [kubectl : register temporary directory] **********************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/kubectl/tasks/main.yaml:2
+changed: [localhost] => {"changed": true, "gid": 0, "group": "root", "mode": "0700", "owner": "root", "path": "/tmp/ansible.ogvj3x6p", "size": 4096, "state": "directory", "uid": 0}
+
+TASK [check kubectl] ***********************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/kubectl/tasks/main.yaml:9
+ok: [localhost] => {"changed": false, "stat": {"atime": 1625732109.5056047, "attr_flags": "e", "attributes": ["extents"], "block_size": 4096, "blocks": 83904, "charset": "binary", "checksum": "95a29cd56f71a4f203d6c046db30c1bf7901243c", "ctime": 1625108802.4918783, "dev": 64513, "device_type": 0, "executable": true, "exists": true, "gid": 0, "gr_name": "root", "inode": 2061585, "isblk": false, "ischr": false, "isdir": false, "isfifo": false, "isgid": false, "islnk": false, "isreg": true, "issock": false, "isuid": false, "mimetype": "application/x-executable", "mode": "0755", "mtime": 1594831817.0, "nlink": 1, "path": "/root/bin/kubectl", "pw_name": "root", "readable": true, "rgrp": true, "roth": true, "rusr": true, "size": 42958848, "uid": 0, "version": "174362294", "wgrp": false, "woth": false, "writeable": true, "wusr": true, "xgrp": true, "xoth": true, "xusr": true}}
+
+TASK [Download kubectl binary] *************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/kubectl/tasks/main.yaml:16
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [kubectl : Unarchive kubernetes-client] ***********************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/kubectl/tasks/main.yaml:25
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [kubectl : create bin directory] ******************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/kubectl/tasks/main.yaml:33
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [Copy kubectl binary to destination directory] ****************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/kubectl/tasks/main.yaml:41
+skipping: [localhost] => (item=kubectl)  => {"ansible_loop_var": "bin_item", "bin_item": "kubectl", "changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [Test kubectl installation] ***********************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/kubectl/tasks/main.yaml:55
+ok: [localhost] => {"changed": false, "cmd": ["kubectl", "version", "--client", "--short"], "delta": "0:00:00.102584", "end": "2021-07-08 23:54:13.804533", "rc": 0, "start": "2021-07-08 23:54:13.701949", "stderr": "", "stderr_lines": [], "stdout": "Client Version: v1.16.13", "stdout_lines": ["Client Version: v1.16.13"]}
+
+TASK [kubectl : Changing the current context namespace to default] *************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/kubectl/tasks/main.yaml:61
+changed: [localhost] => {"changed": true, "cmd": "KUBECONFIG=/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/config kubectl config set-context --current --namespace=default\n", "delta": "0:00:00.106166", "end": "2021-07-08 23:54:14.245476", "rc": 0, "start": "2021-07-08 23:54:14.139310", "stderr": "", "stderr_lines": [], "stdout": "Context \"kubernetes-admin@kubernetes\" modified.", "stdout_lines": ["Context \"kubernetes-admin@kubernetes\" modified."]}
+
+TASK [setup/flux : Checking if the namespace flux-dev already exists] **********
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/flux/tasks/main.yaml:2
+ok: [localhost] => {"changed": false, "resources": [{"apiVersion": "v1", "kind": "Namespace", "metadata": {"creationTimestamp": "2021-07-01T03:25:47Z", "labels": {"kubernetes.io/metadata.name": "flux-dev"}, "managedFields": [{"apiVersion": "v1", "fieldsType": "FieldsV1", "fieldsV1": {"f:metadata": {"f:labels": {".": {}, "f:kubernetes.io/metadata.name": {}}}}, "manager": "kubectl", "operation": "Update", "time": "2021-07-01T03:25:47Z"}], "name": "flux-dev", "resourceVersion": "3091", "uid": "cb92f755-052b-4c87-ad8e-18a5fd9836de"}, "spec": {"finalizers": ["kubernetes"]}, "status": {"phase": "Active"}}]}
+
+TASK [setup/flux : Create namespaces  "flux-dev"] ******************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/flux/tasks/main.yaml:11
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/flux : Check if Flux is running] ***********************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/flux/tasks/main.yaml:16
+ok: [localhost] => {"changed": false, "resources": [{"apiVersion": "v1", "kind": "Pod", "metadata": {"creationTimestamp": "2021-07-01T03:25:49Z", "generateName": "flux-dev-5b954dc8fc-", "labels": {"app": "flux", "pod-template-hash": "5b954dc8fc", "release": "flux-dev"}, "managedFields": [{"apiVersion": "v1", "fieldsType": "FieldsV1", "fieldsV1": {"f:metadata": {"f:generateName": {}, "f:labels": {".": {}, "f:app": {}, "f:pod-template-hash": {}, "f:release": {}}, "f:ownerReferences": {".": {}, "k:{\"uid\":\"f6bbf263-55d2-4aba-a55e-1cac469e9f54\"}": {".": {}, "f:apiVersion": {}, "f:blockOwnerDeletion": {}, "f:controller": {}, "f:kind": {}, "f:name": {}, "f:uid": {}}}}, "f:spec": {"f:containers": {"k:{\"name\":\"flux\"}": {".": {}, "f:args": {}, "f:env": {".": {}, "k:{\"name\":\"KUBECONFIG\"}": {".": {}, "f:name": {}, "f:value": {}}}, "f:image": {}, "f:imagePullPolicy": {}, "f:livenessProbe": {".": {}, "f:failureThreshold": {}, "f:httpGet": {".": {}, "f:path": {}, "f:port": {}, "f:scheme": {}}, "f:initialDelaySeconds": {}, "f:periodSeconds": {}, "f:successThreshold": {}, "f:timeoutSeconds": {}}, "f:name": {}, "f:ports": {".": {}, "k:{\"containerPort\":3030,\"protocol\":\"TCP\"}": {".": {}, "f:containerPort": {}, "f:name": {}, "f:protocol": {}}}, "f:readinessProbe": {".": {}, "f:failureThreshold": {}, "f:httpGet": {".": {}, "f:path": {}, "f:port": {}, "f:scheme": {}}, "f:initialDelaySeconds": {}, "f:periodSeconds": {}, "f:successThreshold": {}, "f:timeoutSeconds": {}}, "f:resources": {".": {}, "f:requests": {".": {}, "f:cpu": {}, "f:memory": {}}}, "f:terminationMessagePath": {}, "f:terminationMessagePolicy": {}, "f:volumeMounts": {".": {}, "k:{\"mountPath\":\"/etc/fluxd/ssh\"}": {".": {}, "f:mountPath": {}, "f:name": {}, "f:readOnly": {}}, "k:{\"mountPath\":\"/root/.kubectl\"}": {".": {}, "f:mountPath": {}, "f:name": {}}, "k:{\"mountPath\":\"/var/fluxd/keygen\"}": {".": {}, "f:mountPath": {}, "f:name": {}}}}}, "f:dnsPolicy": {}, "f:enableServiceLinks": {}, "f:nodeSelector": {".": {}, "f:beta.kubernetes.io/os": {}}, "f:restartPolicy": {}, "f:schedulerName": {}, "f:securityContext": {}, "f:serviceAccount": {}, "f:serviceAccountName": {}, "f:terminationGracePeriodSeconds": {}, "f:volumes": {".": {}, "k:{\"name\":\"git-key\"}": {".": {}, "f:name": {}, "f:secret": {".": {}, "f:defaultMode": {}, "f:secretName": {}}}, "k:{\"name\":\"git-keygen\"}": {".": {}, "f:emptyDir": {".": {}, "f:medium": {}}, "f:name": {}}, "k:{\"name\":\"kubedir\"}": {".": {}, "f:configMap": {".": {}, "f:defaultMode": {}, "f:name": {}}, "f:name": {}}}}}, "manager": "kube-controller-manager", "operation": "Update", "time": "2021-07-01T03:25:49Z"}, {"apiVersion": "v1", "fieldsType": "FieldsV1", "fieldsV1": {"f:status": {"f:conditions": {".": {}, "k:{\"type\":\"PodScheduled\"}": {".": {}, "f:lastProbeTime": {}, "f:lastTransitionTime": {}, "f:message": {}, "f:reason": {}, "f:status": {}, "f:type": {}}}}}, "manager": "kube-scheduler", "operation": "Update", "time": "2021-07-01T03:25:49Z"}, {"apiVersion": "v1", "fieldsType": "FieldsV1", "fieldsV1": {"f:status": {"f:conditions": {"k:{\"type\":\"ContainersReady\"}": {".": {}, "f:lastProbeTime": {}, "f:lastTransitionTime": {}, "f:status": {}, "f:type": {}}, "k:{\"type\":\"Initialized\"}": {".": {}, "f:lastProbeTime": {}, "f:lastTransitionTime": {}, "f:status": {}, "f:type": {}}, "k:{\"type\":\"Ready\"}": {".": {}, "f:lastProbeTime": {}, "f:lastTransitionTime": {}, "f:status": {}, "f:type": {}}}, "f:containerStatuses": {}, "f:hostIP": {}, "f:phase": {}, "f:podIP": {}, "f:podIPs": {".": {}, "k:{\"ip\":\"10.244.0.63\"}": {".": {}, "f:ip": {}}}, "f:startTime": {}}}, "manager": "kubelet", "operation": "Update", "time": "2021-07-07T14:25:04Z"}], "name": "flux-dev-5b954dc8fc-bfj9j", "namespace": "flux-dev", "ownerReferences": [{"apiVersion": "apps/v1", "blockOwnerDeletion": true, "controller": true, "kind": "ReplicaSet", "name": "flux-dev-5b954dc8fc", "uid": "f6bbf263-55d2-4aba-a55e-1cac469e9f54"}], "resourceVersion": "738917", "uid": "4bfed572-780f-4570-999a-1b1e3859f08c"}, "spec": {"containers": [{"args": ["--log-format=fmt", "--ssh-keygen-dir=/var/fluxd/keygen", "--ssh-keygen-format=RFC4716", "--k8s-secret-name=git-auth-dev", "--memcached-hostname=flux-dev-memcached", "--sync-state=git", "--memcached-service=", "--git-url=https://hungphamqs94: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@github.com/hungphamqs94/blockchain-automation-framework.git", "--git-branch=main", "--git-path=platforms/hyperledger-fabric/releases/dev", "--git-readonly=false", "--git-user=Weave Flux", "--git-email=support@weave.works", "--git-verify-signatures=false", "--git-set-author=false", "--git-poll-interval=2m", "--git-timeout=200s", "--sync-interval=2m", "--git-ci-skip=false", "--git-label=sync-dev", "--automation-interval=5m", "--registry-rps=200", "--registry-burst=125", "--registry-trace=false", "--registry-insecure-host=index.docker.io/hyperledgerlabs"], "env": [{"name": "KUBECONFIG", "value": "/root/.kubectl/config"}], "image": "docker.io/fluxcd/flux:1.20.2", "imagePullPolicy": "IfNotPresent", "livenessProbe": {"failureThreshold": 3, "httpGet": {"path": "/api/flux/v6/identity.pub", "port": 3030, "scheme": "HTTP"}, "initialDelaySeconds": 30, "periodSeconds": 10, "successThreshold": 1, "timeoutSeconds": 120}, "name": "flux", "ports": [{"containerPort": 3030, "name": "http", "protocol": "TCP"}], "readinessProbe": {"failureThreshold": 3, "httpGet": {"path": "/api/flux/v6/identity.pub", "port": 3030, "scheme": "HTTP"}, "initialDelaySeconds": 30, "periodSeconds": 10, "successThreshold": 1, "timeoutSeconds": 120}, "resources": {"requests": {"cpu": "50m", "memory": "64Mi"}}, "terminationMessagePath": "/dev/termination-log", "terminationMessagePolicy": "File", "volumeMounts": [{"mountPath": "/root/.kubectl", "name": "kubedir"}, {"mountPath": "/etc/fluxd/ssh", "name": "git-key", "readOnly": true}, {"mountPath": "/var/fluxd/keygen", "name": "git-keygen"}, {"mountPath": "/var/run/secrets/kubernetes.io/serviceaccount", "name": "kube-api-access-thdvp", "readOnly": true}]}], "dnsPolicy": "ClusterFirst", "enableServiceLinks": true, "nodeName": "worker01", "nodeSelector": {"beta.kubernetes.io/os": "linux"}, "preemptionPolicy": "PreemptLowerPriority", "priority": 0, "restartPolicy": "Always", "schedulerName": "default-scheduler", "securityContext": {}, "serviceAccount": "flux-dev", "serviceAccountName": "flux-dev", "terminationGracePeriodSeconds": 30, "tolerations": [{"effect": "NoExecute", "key": "node.kubernetes.io/not-ready", "operator": "Exists", "tolerationSeconds": 300}, {"effect": "NoExecute", "key": "node.kubernetes.io/unreachable", "operator": "Exists", "tolerationSeconds": 300}], "volumes": [{"configMap": {"defaultMode": 420, "name": "flux-dev-kube-config"}, "name": "kubedir"}, {"name": "git-key", "secret": {"defaultMode": 256, "secretName": "git-auth-dev"}}, {"emptyDir": {"medium": "Memory"}, "name": "git-keygen"}, {"name": "kube-api-access-thdvp", "projected": {"defaultMode": 420, "sources": [{"serviceAccountToken": {"expirationSeconds": 3607, "path": "token"}}, {"configMap": {"items": [{"key": "ca.crt", "path": "ca.crt"}], "name": "kube-root-ca.crt"}}, {"downwardAPI": {"items": [{"fieldRef": {"apiVersion": "v1", "fieldPath": "metadata.namespace"}, "path": "namespace"}]}}]}}]}, "status": {"conditions": [{"lastProbeTime": null, "lastTransitionTime": "2021-07-01T03:27:28Z", "status": "True", "type": "Initialized"}, {"lastProbeTime": null, "lastTransitionTime": "2021-07-07T14:25:04Z", "status": "True", "type": "Ready"}, {"lastProbeTime": null, "lastTransitionTime": "2021-07-07T14:25:04Z", "status": "True", "type": "ContainersReady"}, {"lastProbeTime": null, "lastTransitionTime": "2021-07-01T03:27:28Z", "status": "True", "type": "PodScheduled"}], "containerStatuses": [{"containerID": "docker://a9e4943c16943c8260fd58283aaa7291e627ebffa205ac9cd17d437f629a9393", "image": "fluxcd/flux:1.20.2", "imageID": "docker-pullable://fluxcd/flux@sha256:57dac3608bcb50dc0a42c5675f6b574e9068ae564332942160d894131f934d31", "lastState": {"terminated": {"containerID": "docker://95ede46185a36ab5eae397c5036dfd4a0da5955a2f56ce7b12b5108c44966db4", "exitCode": 255, "finishedAt": "2021-07-07T14:23:40Z", "reason": "Error", "startedAt": "2021-07-02T15:44:31Z"}}, "name": "flux", "ready": true, "restartCount": 2, "started": true, "state": {"running": {"startedAt": "2021-07-07T14:24:32Z"}}}], "hostIP": "45.32.124.125", "phase": "Running", "podIP": "10.244.0.63", "podIPs": [{"ip": "10.244.0.63"}], "qosClass": "Burstable", "startTime": "2021-07-01T03:27:28Z"}}]}
+
+TASK [setup/flux : Get ssh known hosts] ****************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/flux/tasks/main.yaml:31
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/flux : Helm repo add] **********************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/flux/tasks/main.yaml:39
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/flux : Install flux for over https connection] *********************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/flux/tasks/main.yaml:47
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/flux : Install flux for over ssh connection] ***********************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/flux/tasks/main.yaml:58
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [wait for pods to come up] ************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/flux/tasks/main.yaml:70
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [Prepare nodes and clients ports for ambassador] **************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/kubernetes-env-setup.yaml:28
+skipping: [localhost] => (item={u'ca_data': {u'url': u'ca.org1.example.com:7054', u'certificate': u'/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/org1.crt'}, u'gitops': {u'username': u'hungphamqs94', u'private_key': u'/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/gitops', u'git_protocol': u'https', u'chart_source': u'platforms/hyperledger-fabric/charts', u'git_url': u'https://github.com/hungphamqs94/blockchain-automation-framework.git', u'branch': u'main', u'release_dir': u'platforms/hyperledger-fabric/releases/dev', u'password': u'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', u'email': u'cogangsekhongthua1994@gmail.com', u'git_repo': u'github.com/hungphamqs94/blockchain-automation-framework.git'}, u'cloud_provider': u'minikube', u'name': u'Org1', u'country': u'UK', u'org_status': u'new', u'external_url_suffix': u'org1.example.com', u'state': u'London', u'location': u'London', u'vault': {u'url': u'http://45.32.124.125:8200', u'root_token': u's.VQsR0ahXDL7CmiYcYf0k0wXe', u'secret_path': u'my-secrets'}, u'services': {u'consensus': {u'grpc': {u'port': 9092}, u'type': u'broker', u'name': u'kafka', u'replicas': 4}, u'ca': {u'grpc': {u'port': 7054}, u'type': u'ca', u'name': u'ca', u'subject': u'/C=US/ST=New York/L=New York/O=Store/CN=ca.store-net'}, u'orderers': [{u'consensus': u'kafka', u'grpc': {u'port': 7050}, u'orderer': None, u'type': u'orderer', u'name': u'orderer1'}, {u'consensus': u'raft', u'grpc': {u'port': 7050}, u'orderer': None, u'type': u'orderer', u'name': u'orderer2'}]}, u'organization': None, u'k8s': {u'config_file': u'/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/config', u'context': u'kubernetes-admin@kubernetes'}, u'type': u'orderer', u'subject': u'O=Orderer,L=51.50/-0.13/London,C=GB'})  => {"ansible_loop_var": "organizationItem", "changed": false, "organizationItem": {"ca_data": {"certificate": "/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/org1.crt", "url": "ca.org1.example.com:7054"}, "cloud_provider": "minikube", "country": "UK", "external_url_suffix": "org1.example.com", "gitops": {"branch": "main", "chart_source": "platforms/hyperledger-fabric/charts", "email": "cogangsekhongthua1994@gmail.com", "git_protocol": "https", "git_repo": "github.com/hungphamqs94/blockchain-automation-framework.git", "git_url": "https://github.com/hungphamqs94/blockchain-automation-framework.git", "password": "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", "private_key": "/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/gitops", "release_dir": "platforms/hyperledger-fabric/releases/dev", "username": "hungphamqs94"}, "k8s": {"config_file": "/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/config", "context": "kubernetes-admin@kubernetes"}, "location": "London", "name": "Org1", "org_status": "new", "organization": null, "services": {"ca": {"grpc": {"port": 7054}, "name": "ca", "subject": "/C=US/ST=New York/L=New York/O=Store/CN=ca.store-net", "type": "ca"}, "consensus": {"grpc": {"port": 9092}, "name": "kafka", "replicas": 4, "type": "broker"}, "orderers": [{"consensus": "kafka", "grpc": {"port": 7050}, "name": "orderer1", "orderer": null, "type": "orderer"}, {"consensus": "raft", "grpc": {"port": 7050}, "name": "orderer2", "orderer": null, "type": "orderer"}]}, "state": "London", "subject": "O=Orderer,L=51.50/-0.13/London,C=GB", "type": "orderer", "vault": {"root_token": "s.VQsR0ahXDL7CmiYcYf0k0wXe", "secret_path": "my-secrets", "url": "http://45.32.124.125:8200"}}, "skip_reason": "Conditional result was False"}
+
+TASK [include_role : setup/ambassador] *****************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/kubernetes-env-setup.yaml:37
+skipping: [localhost] => (item={u'ca_data': {u'url': u'ca.org1.example.com:7054', u'certificate': u'/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/org1.crt'}, u'gitops': {u'username': u'hungphamqs94', u'private_key': u'/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/gitops', u'git_protocol': u'https', u'chart_source': u'platforms/hyperledger-fabric/charts', u'git_url': u'https://github.com/hungphamqs94/blockchain-automation-framework.git', u'branch': u'main', u'release_dir': u'platforms/hyperledger-fabric/releases/dev', u'password': u'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', u'email': u'cogangsekhongthua1994@gmail.com', u'git_repo': u'github.com/hungphamqs94/blockchain-automation-framework.git'}, u'cloud_provider': u'minikube', u'name': u'Org1', u'country': u'UK', u'org_status': u'new', u'external_url_suffix': u'org1.example.com', u'state': u'London', u'location': u'London', u'vault': {u'url': u'http://45.32.124.125:8200', u'root_token': u's.VQsR0ahXDL7CmiYcYf0k0wXe', u'secret_path': u'my-secrets'}, u'services': {u'consensus': {u'grpc': {u'port': 9092}, u'type': u'broker', u'name': u'kafka', u'replicas': 4}, u'ca': {u'grpc': {u'port': 7054}, u'type': u'ca', u'name': u'ca', u'subject': u'/C=US/ST=New York/L=New York/O=Store/CN=ca.store-net'}, u'orderers': [{u'consensus': u'kafka', u'grpc': {u'port': 7050}, u'orderer': None, u'type': u'orderer', u'name': u'orderer1'}, {u'consensus': u'raft', u'grpc': {u'port': 7050}, u'orderer': None, u'type': u'orderer', u'name': u'orderer2'}]}, u'organization': None, u'k8s': {u'config_file': u'/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/config', u'context': u'kubernetes-admin@kubernetes'}, u'type': u'orderer', u'subject': u'O=Orderer,L=51.50/-0.13/London,C=GB'})  => {"ansible_loop_var": "item", "changed": false, "item": {"ca_data": {"certificate": "/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/org1.crt", "url": "ca.org1.example.com:7054"}, "cloud_provider": "minikube", "country": "UK", "external_url_suffix": "org1.example.com", "gitops": {"branch": "main", "chart_source": "platforms/hyperledger-fabric/charts", "email": "cogangsekhongthua1994@gmail.com", "git_protocol": "https", "git_repo": "github.com/hungphamqs94/blockchain-automation-framework.git", "git_url": "https://github.com/hungphamqs94/blockchain-automation-framework.git", "password": "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", "private_key": "/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/gitops", "release_dir": "platforms/hyperledger-fabric/releases/dev", "username": "hungphamqs94"}, "k8s": {"config_file": "/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/config", "context": "kubernetes-admin@kubernetes"}, "location": "London", "name": "Org1", "org_status": "new", "organization": null, "services": {"ca": {"grpc": {"port": 7054}, "name": "ca", "subject": "/C=US/ST=New York/L=New York/O=Store/CN=ca.store-net", "type": "ca"}, "consensus": {"grpc": {"port": 9092}, "name": "kafka", "replicas": 4, "type": "broker"}, "orderers": [{"consensus": "kafka", "grpc": {"port": 7050}, "name": "orderer1", "orderer": null, "type": "orderer"}, {"consensus": "raft", "grpc": {"port": 7050}, "name": "orderer2", "orderer": null, "type": "orderer"}]}, "state": "London", "subject": "O=Orderer,L=51.50/-0.13/London,C=GB", "type": "orderer", "vault": {"root_token": "s.VQsR0ahXDL7CmiYcYf0k0wXe", "secret_path": "my-secrets", "url": "http://45.32.124.125:8200"}}, "skip_reason": "Conditional result was False"}
+
+TASK [include_role : setup/haproxy-ingress] ************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/kubernetes-env-setup.yaml:51
+
+TASK [aws-cli : register temporary directory] **********************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/aws-cli/tasks/main.yaml:2
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [aws-cli : check aws cli] *************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/aws-cli/tasks/main.yaml:9
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [aws-cli : download aws cli] **********************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/aws-cli/tasks/main.yaml:16
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [aws-cli : extract aws cli] ***********************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/aws-cli/tasks/main.yaml:25
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [create bin directory] ****************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/aws-cli/tasks/main.yaml:34
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [aws-cli : install aws cli] ***********************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/aws-cli/tasks/main.yaml:44
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [aws-cli : configuring aws] ***********************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/aws-cli/tasks/main.yaml:52
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/aws-auth : register temporary directory] ***************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/aws-auth/tasks/main.yaml:2
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/aws-auth : check aws-authenticator] ********************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/aws-auth/tasks/main.yaml:9
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/aws-auth : create bin directory] ***********************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/aws-auth/tasks/main.yaml:16
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/aws-auth : Install aws-authenticator] ******************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/aws-auth/tasks/main.yaml:24
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/helm : register temporary directory] *******************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/helm/tasks/main.yaml:2
+changed: [localhost] => {"changed": true, "gid": 0, "group": "root", "mode": "0700", "owner": "root", "path": "/tmp/ansible._b1q35u9", "size": 4096, "state": "directory", "uid": 0}
+
+TASK [setup/helm : check helm] *************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/helm/tasks/main.yaml:9
+ok: [localhost] => {"changed": false, "stat": {"atime": 1625732111.9615624, "attr_flags": "e", "attributes": ["extents"], "block_size": 4096, "blocks": 78864, "charset": "binary", "checksum": "9fb983829678b1159f74420b5007fbb5e13b3e6f", "ctime": 1625108947.8362136, "dev": 64513, "device_type": 0, "executable": true, "exists": true, "gid": 0, "gr_name": "root", "inode": 2061577, "isblk": false, "ischr": false, "isdir": false, "isfifo": false, "isgid": false, "islnk": false, "isreg": true, "issock": false, "isuid": false, "mimetype": "application/x-executable", "mode": "0755", "mtime": 1625108947.456213, "nlink": 1, "path": "/root/bin/helm", "pw_name": "root", "readable": true, "rgrp": true, "roth": true, "rusr": true, "size": 40378368, "uid": 0, "version": "2384026581", "wgrp": false, "woth": false, "writeable": true, "wusr": true, "xgrp": true, "xoth": true, "xusr": true}}
+
+TASK [setup/helm : Install helm] ***********************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/helm/tasks/main.yaml:16
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/helm : Unzip helm archive] *****************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/helm/tasks/main.yaml:27
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [create bin directory] ****************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/helm/tasks/main.yaml:37
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/helm : Move helm binaries] *****************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/helm/tasks/main.yaml:47
+skipping: [localhost] => (item=helm)  => {"ansible_loop_var": "bin_item", "bin_item": "helm", "changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/helm : Test helm installation] *************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/helm/tasks/main.yaml:58
+ok: [localhost] => {"changed": false, "cmd": ["helm", "version", "--client", "--short"], "delta": "0:00:00.080966", "end": "2021-07-08 23:54:19.568983", "rc": 0, "start": "2021-07-08 23:54:19.488017", "stderr": "", "stderr_lines": [], "stdout": "v3.2.4+g0ad800e", "stdout_lines": ["v3.2.4+g0ad800e"]}
+
+TASK [setup/haproxy-ingress : Check if haproxy is already installed] ***********
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/haproxy-ingress/tasks/main.yaml:3
+ok: [localhost] => {"changed": false, "resources": [{"apiVersion": "v1", "kind": "Pod", "metadata": {"creationTimestamp": "2021-07-01T03:27:50Z", "generateName": "haproxy-ingress-", "labels": {"controller-revision-hash": "58866ffc67", "pod-template-generation": "1", "run": "haproxy-ingress"}, "managedFields": [{"apiVersion": "v1", "fieldsType": "FieldsV1", "fieldsV1": {"f:metadata": {"f:generateName": {}, "f:labels": {".": {}, "f:controller-revision-hash": {}, "f:pod-template-generation": {}, "f:run": {}}, "f:ownerReferences": {".": {}, "k:{\"uid\":\"4a15f8b6-e8c7-4eab-9037-0e1994eb6f59\"}": {".": {}, "f:apiVersion": {}, "f:blockOwnerDeletion": {}, "f:controller": {}, "f:kind": {}, "f:name": {}, "f:uid": {}}}}, "f:spec": {"f:affinity": {".": {}, "f:nodeAffinity": {".": {}, "f:requiredDuringSchedulingIgnoredDuringExecution": {".": {}, "f:nodeSelectorTerms": {}}}}, "f:containers": {"k:{\"name\":\"haproxy-ingress\"}": {".": {}, "f:args": {}, "f:env": {".": {}, "k:{\"name\":\"POD_NAME\"}": {".": {}, "f:name": {}, "f:valueFrom": {".": {}, "f:fieldRef": {".": {}, "f:apiVersion": {}, "f:fieldPath": {}}}}, "k:{\"name\":\"POD_NAMESPACE\"}": {".": {}, "f:name": {}, "f:valueFrom": {".": {}, "f:fieldRef": {".": {}, "f:apiVersion": {}, "f:fieldPath": {}}}}}, "f:image": {}, "f:imagePullPolicy": {}, "f:livenessProbe": {".": {}, "f:failureThreshold": {}, "f:httpGet": {".": {}, "f:path": {}, "f:port": {}, "f:scheme": {}}, "f:periodSeconds": {}, "f:successThreshold": {}, "f:timeoutSeconds": {}}, "f:name": {}, "f:ports": {".": {}, "k:{\"containerPort\":443,\"protocol\":\"TCP\"}": {".": {}, "f:containerPort": {}, "f:hostPort": {}, "f:name": {}, "f:protocol": {}}, "k:{\"containerPort\":5061,\"protocol\":\"TCP\"}": {".": {}, "f:containerPort": {}, "f:hostPort": {}, "f:name": {}, "f:protocol": {}}, "k:{\"containerPort\":80,\"protocol\":\"TCP\"}": {".": {}, "f:containerPort": {}, "f:hostPort": {}, "f:name": {}, "f:protocol": {}}}, "f:resources": {}, "f:terminationMessagePath": {}, "f:terminationMessagePolicy": {}}}, "f:dnsPolicy": {}, "f:enableServiceLinks": {}, "f:hostNetwork": {}, "f:restartPolicy": {}, "f:schedulerName": {}, "f:securityContext": {}, "f:serviceAccount": {}, "f:serviceAccountName": {}, "f:terminationGracePeriodSeconds": {}, "f:tolerations": {}}}, "manager": "kube-controller-manager", "operation": "Update", "time": "2021-07-01T03:27:50Z"}, {"apiVersion": "v1", "fieldsType": "FieldsV1", "fieldsV1": {"f:status": {"f:conditions": {"k:{\"type\":\"ContainersReady\"}": {".": {}, "f:lastProbeTime": {}, "f:lastTransitionTime": {}, "f:status": {}, "f:type": {}}, "k:{\"type\":\"Initialized\"}": {".": {}, "f:lastProbeTime": {}, "f:lastTransitionTime": {}, "f:status": {}, "f:type": {}}, "k:{\"type\":\"Ready\"}": {".": {}, "f:lastProbeTime": {}, "f:lastTransitionTime": {}, "f:status": {}, "f:type": {}}}, "f:containerStatuses": {}, "f:hostIP": {}, "f:phase": {}, "f:podIP": {}, "f:podIPs": {".": {}, "k:{\"ip\":\"45.32.124.125\"}": {".": {}, "f:ip": {}}}, "f:startTime": {}}}, "manager": "kubelet", "operation": "Update", "time": "2021-07-07T14:24:24Z"}], "name": "haproxy-ingress-n44wc", "namespace": "ingress-controller", "ownerReferences": [{"apiVersion": "apps/v1", "blockOwnerDeletion": true, "controller": true, "kind": "DaemonSet", "name": "haproxy-ingress", "uid": "4a15f8b6-e8c7-4eab-9037-0e1994eb6f59"}], "resourceVersion": "738870", "uid": "c0c322f3-3436-4f86-bfef-340cf8a3ea9d"}, "spec": {"affinity": {"nodeAffinity": {"requiredDuringSchedulingIgnoredDuringExecution": {"nodeSelectorTerms": [{"matchFields": [{"key": "metadata.name", "operator": "In", "values": ["worker01"]}]}]}}}, "containers": [{"args": ["--default-backend-service=$(POD_NAMESPACE)/ingress-default-backend", "--configmap=$(POD_NAMESPACE)/haproxy-ingress", "--sort-backends"], "env": [{"name": "POD_NAME", "valueFrom": {"fieldRef": {"apiVersion": "v1", "fieldPath": "metadata.name"}}}, {"name": "POD_NAMESPACE", "valueFrom": {"fieldRef": {"apiVersion": "v1", "fieldPath": "metadata.namespace"}}}], "image": "quay.io/jcmoraisjr/haproxy-ingress:v0.9.1", "imagePullPolicy": "IfNotPresent", "livenessProbe": {"failureThreshold": 3, "httpGet": {"path": "/healthz", "port": 10253, "scheme": "HTTP"}, "periodSeconds": 10, "successThreshold": 1, "timeoutSeconds": 1}, "name": "haproxy-ingress", "ports": [{"containerPort": 80, "hostPort": 80, "name": "http", "protocol": "TCP"}, {"containerPort": 443, "hostPort": 443, "name": "https", "protocol": "TCP"}, {"containerPort": 5061, "hostPort": 5061, "name": "stat", "protocol": "TCP"}], "resources": {}, "terminationMessagePath": "/dev/termination-log", "terminationMessagePolicy": "File", "volumeMounts": [{"mountPath": "/var/run/secrets/kubernetes.io/serviceaccount", "name": "kube-api-access-gtj8p", "readOnly": true}]}], "dnsPolicy": "ClusterFirst", "enableServiceLinks": true, "hostNetwork": true, "nodeName": "worker01", "preemptionPolicy": "PreemptLowerPriority", "priority": 0, "restartPolicy": "Always", "schedulerName": "default-scheduler", "securityContext": {}, "serviceAccount": "ingress-controller", "serviceAccountName": "ingress-controller", "terminationGracePeriodSeconds": 30, "tolerations": [{"effect": "NoExecute", "key": "node.kubernetes.io/not-ready", "operator": "Exists"}, {"effect": "NoExecute", "key": "node.kubernetes.io/unreachable", "operator": "Exists"}, {"effect": "NoSchedule", "key": "node.kubernetes.io/disk-pressure", "operator": "Exists"}, {"effect": "NoSchedule", "key": "node.kubernetes.io/memory-pressure", "operator": "Exists"}, {"effect": "NoSchedule", "key": "node.kubernetes.io/pid-pressure", "operator": "Exists"}, {"effect": "NoSchedule", "key": "node.kubernetes.io/unschedulable", "operator": "Exists"}, {"effect": "NoSchedule", "key": "node.kubernetes.io/network-unavailable", "operator": "Exists"}], "volumes": [{"name": "kube-api-access-gtj8p", "projected": {"defaultMode": 420, "sources": [{"serviceAccountToken": {"expirationSeconds": 3607, "path": "token"}}, {"configMap": {"items": [{"key": "ca.crt", "path": "ca.crt"}], "name": "kube-root-ca.crt"}}, {"downwardAPI": {"items": [{"fieldRef": {"apiVersion": "v1", "fieldPath": "metadata.namespace"}, "path": "namespace"}]}}]}}]}, "status": {"conditions": [{"lastProbeTime": null, "lastTransitionTime": "2021-07-01T03:27:50Z", "status": "True", "type": "Initialized"}, {"lastProbeTime": null, "lastTransitionTime": "2021-07-07T14:24:16Z", "status": "True", "type": "Ready"}, {"lastProbeTime": null, "lastTransitionTime": "2021-07-07T14:24:16Z", "status": "True", "type": "ContainersReady"}, {"lastProbeTime": null, "lastTransitionTime": "2021-07-01T03:27:50Z", "status": "True", "type": "PodScheduled"}], "containerStatuses": [{"containerID": "docker://bc6b5f046f6abd02bd1162c6f0cb29537a42ce3642da47b8430f7482e3f15e68", "image": "quay.io/jcmoraisjr/haproxy-ingress:v0.9.1", "imageID": "docker-pullable://quay.io/jcmoraisjr/haproxy-ingress@sha256:406705945c949a3efa9ad33cc21b3f643f45debeb0a54c61066a6c104e404d91", "lastState": {"terminated": {"containerID": "docker://850370238f0fb7ddab9e6eca8231373a813b6b36ddb86a59a81189363995fdf2", "exitCode": 2, "finishedAt": "2021-07-07T14:24:44Z", "reason": "Error", "startedAt": "2021-07-07T14:24:15Z"}}, "name": "haproxy-ingress", "ready": true, "restartCount": 4, "started": true, "state": {"running": {"startedAt": "2021-07-07T14:24:45Z"}}}], "hostIP": "45.32.124.125", "phase": "Running", "podIP": "45.32.124.125", "podIPs": [{"ip": "45.32.124.125"}], "qosClass": "BestEffort", "startTime": "2021-07-01T03:27:50Z"}}]}
+
+TASK [setup/haproxy-ingress : Install HAProxy Ingress controller] **************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/haproxy-ingress/tasks/main.yaml:16
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/haproxy-ingress : Enable external DNS] *****************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/haproxy-ingress/tasks/main.yaml:25
+changed: [localhost] => {"changed": true, "cmd": "KUBECONFIG=/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/build/config kubectl annotate service haproxy-ingress -n ingress-controller --overwrite \"external-dns.alpha.kubernetes.io/hostname=*.org1.example.com.\"\n", "delta": "0:00:00.226417", "end": "2021-07-08 23:54:21.346292", "rc": 0, "start": "2021-07-08 23:54:21.119875", "stderr": "", "stderr_lines": [], "stdout": "service/haproxy-ingress annotated", "stdout_lines": ["service/haproxy-ingress annotated"]}
+
+TASK [setup/haproxy-ingress : Disable TLS1.0 for the AWS] **********************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/haproxy-ingress/tasks/main.yaml:34
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [wait for pods to come up] ************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/setup/haproxy-ingress/tasks/main.yaml:43
+
+TASK [check/helm_component : Wait for Pod flux in ingress-controller] **********
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/helm_component/tasks/main.yaml:5
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [check/helm_component : Check for {{ job_title }} job on {{ component_name }}] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/helm_component/tasks/main.yaml:22
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [check/helm_component : Wait for Pod flux in ingress-controller] **********
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/helm_component/tasks/main.yaml:36
+ok: [localhost] => {"attempts": 1, "changed": false, "resources": [{"apiVersion": "v1", "kind": "Pod", "metadata": {"creationTimestamp": "2021-07-01T03:27:50Z", "generateName": "haproxy-ingress-", "labels": {"controller-revision-hash": "58866ffc67", "pod-template-generation": "1", "run": "haproxy-ingress"}, "managedFields": [{"apiVersion": "v1", "fieldsType": "FieldsV1", "fieldsV1": {"f:metadata": {"f:generateName": {}, "f:labels": {".": {}, "f:controller-revision-hash": {}, "f:pod-template-generation": {}, "f:run": {}}, "f:ownerReferences": {".": {}, "k:{\"uid\":\"4a15f8b6-e8c7-4eab-9037-0e1994eb6f59\"}": {".": {}, "f:apiVersion": {}, "f:blockOwnerDeletion": {}, "f:controller": {}, "f:kind": {}, "f:name": {}, "f:uid": {}}}}, "f:spec": {"f:affinity": {".": {}, "f:nodeAffinity": {".": {}, "f:requiredDuringSchedulingIgnoredDuringExecution": {".": {}, "f:nodeSelectorTerms": {}}}}, "f:containers": {"k:{\"name\":\"haproxy-ingress\"}": {".": {}, "f:args": {}, "f:env": {".": {}, "k:{\"name\":\"POD_NAME\"}": {".": {}, "f:name": {}, "f:valueFrom": {".": {}, "f:fieldRef": {".": {}, "f:apiVersion": {}, "f:fieldPath": {}}}}, "k:{\"name\":\"POD_NAMESPACE\"}": {".": {}, "f:name": {}, "f:valueFrom": {".": {}, "f:fieldRef": {".": {}, "f:apiVersion": {}, "f:fieldPath": {}}}}}, "f:image": {}, "f:imagePullPolicy": {}, "f:livenessProbe": {".": {}, "f:failureThreshold": {}, "f:httpGet": {".": {}, "f:path": {}, "f:port": {}, "f:scheme": {}}, "f:periodSeconds": {}, "f:successThreshold": {}, "f:timeoutSeconds": {}}, "f:name": {}, "f:ports": {".": {}, "k:{\"containerPort\":443,\"protocol\":\"TCP\"}": {".": {}, "f:containerPort": {}, "f:hostPort": {}, "f:name": {}, "f:protocol": {}}, "k:{\"containerPort\":5061,\"protocol\":\"TCP\"}": {".": {}, "f:containerPort": {}, "f:hostPort": {}, "f:name": {}, "f:protocol": {}}, "k:{\"containerPort\":80,\"protocol\":\"TCP\"}": {".": {}, "f:containerPort": {}, "f:hostPort": {}, "f:name": {}, "f:protocol": {}}}, "f:resources": {}, "f:terminationMessagePath": {}, "f:terminationMessagePolicy": {}}}, "f:dnsPolicy": {}, "f:enableServiceLinks": {}, "f:hostNetwork": {}, "f:restartPolicy": {}, "f:schedulerName": {}, "f:securityContext": {}, "f:serviceAccount": {}, "f:serviceAccountName": {}, "f:terminationGracePeriodSeconds": {}, "f:tolerations": {}}}, "manager": "kube-controller-manager", "operation": "Update", "time": "2021-07-01T03:27:50Z"}, {"apiVersion": "v1", "fieldsType": "FieldsV1", "fieldsV1": {"f:status": {"f:conditions": {"k:{\"type\":\"ContainersReady\"}": {".": {}, "f:lastProbeTime": {}, "f:lastTransitionTime": {}, "f:status": {}, "f:type": {}}, "k:{\"type\":\"Initialized\"}": {".": {}, "f:lastProbeTime": {}, "f:lastTransitionTime": {}, "f:status": {}, "f:type": {}}, "k:{\"type\":\"Ready\"}": {".": {}, "f:lastProbeTime": {}, "f:lastTransitionTime": {}, "f:status": {}, "f:type": {}}}, "f:containerStatuses": {}, "f:hostIP": {}, "f:phase": {}, "f:podIP": {}, "f:podIPs": {".": {}, "k:{\"ip\":\"45.32.124.125\"}": {".": {}, "f:ip": {}}}, "f:startTime": {}}}, "manager": "kubelet", "operation": "Update", "time": "2021-07-07T14:24:24Z"}], "name": "haproxy-ingress-n44wc", "namespace": "ingress-controller", "ownerReferences": [{"apiVersion": "apps/v1", "blockOwnerDeletion": true, "controller": true, "kind": "DaemonSet", "name": "haproxy-ingress", "uid": "4a15f8b6-e8c7-4eab-9037-0e1994eb6f59"}], "resourceVersion": "738870", "uid": "c0c322f3-3436-4f86-bfef-340cf8a3ea9d"}, "spec": {"affinity": {"nodeAffinity": {"requiredDuringSchedulingIgnoredDuringExecution": {"nodeSelectorTerms": [{"matchFields": [{"key": "metadata.name", "operator": "In", "values": ["worker01"]}]}]}}}, "containers": [{"args": ["--default-backend-service=$(POD_NAMESPACE)/ingress-default-backend", "--configmap=$(POD_NAMESPACE)/haproxy-ingress", "--sort-backends"], "env": [{"name": "POD_NAME", "valueFrom": {"fieldRef": {"apiVersion": "v1", "fieldPath": "metadata.name"}}}, {"name": "POD_NAMESPACE", "valueFrom": {"fieldRef": {"apiVersion": "v1", "fieldPath": "metadata.namespace"}}}], "image": "quay.io/jcmoraisjr/haproxy-ingress:v0.9.1", "imagePullPolicy": "IfNotPresent", "livenessProbe": {"failureThreshold": 3, "httpGet": {"path": "/healthz", "port": 10253, "scheme": "HTTP"}, "periodSeconds": 10, "successThreshold": 1, "timeoutSeconds": 1}, "name": "haproxy-ingress", "ports": [{"containerPort": 80, "hostPort": 80, "name": "http", "protocol": "TCP"}, {"containerPort": 443, "hostPort": 443, "name": "https", "protocol": "TCP"}, {"containerPort": 5061, "hostPort": 5061, "name": "stat", "protocol": "TCP"}], "resources": {}, "terminationMessagePath": "/dev/termination-log", "terminationMessagePolicy": "File", "volumeMounts": [{"mountPath": "/var/run/secrets/kubernetes.io/serviceaccount", "name": "kube-api-access-gtj8p", "readOnly": true}]}], "dnsPolicy": "ClusterFirst", "enableServiceLinks": true, "hostNetwork": true, "nodeName": "worker01", "preemptionPolicy": "PreemptLowerPriority", "priority": 0, "restartPolicy": "Always", "schedulerName": "default-scheduler", "securityContext": {}, "serviceAccount": "ingress-controller", "serviceAccountName": "ingress-controller", "terminationGracePeriodSeconds": 30, "tolerations": [{"effect": "NoExecute", "key": "node.kubernetes.io/not-ready", "operator": "Exists"}, {"effect": "NoExecute", "key": "node.kubernetes.io/unreachable", "operator": "Exists"}, {"effect": "NoSchedule", "key": "node.kubernetes.io/disk-pressure", "operator": "Exists"}, {"effect": "NoSchedule", "key": "node.kubernetes.io/memory-pressure", "operator": "Exists"}, {"effect": "NoSchedule", "key": "node.kubernetes.io/pid-pressure", "operator": "Exists"}, {"effect": "NoSchedule", "key": "node.kubernetes.io/unschedulable", "operator": "Exists"}, {"effect": "NoSchedule", "key": "node.kubernetes.io/network-unavailable", "operator": "Exists"}], "volumes": [{"name": "kube-api-access-gtj8p", "projected": {"defaultMode": 420, "sources": [{"serviceAccountToken": {"expirationSeconds": 3607, "path": "token"}}, {"configMap": {"items": [{"key": "ca.crt", "path": "ca.crt"}], "name": "kube-root-ca.crt"}}, {"downwardAPI": {"items": [{"fieldRef": {"apiVersion": "v1", "fieldPath": "metadata.namespace"}, "path": "namespace"}]}}]}}]}, "status": {"conditions": [{"lastProbeTime": null, "lastTransitionTime": "2021-07-01T03:27:50Z", "status": "True", "type": "Initialized"}, {"lastProbeTime": null, "lastTransitionTime": "2021-07-07T14:24:16Z", "status": "True", "type": "Ready"}, {"lastProbeTime": null, "lastTransitionTime": "2021-07-07T14:24:16Z", "status": "True", "type": "ContainersReady"}, {"lastProbeTime": null, "lastTransitionTime": "2021-07-01T03:27:50Z", "status": "True", "type": "PodScheduled"}], "containerStatuses": [{"containerID": "docker://bc6b5f046f6abd02bd1162c6f0cb29537a42ce3642da47b8430f7482e3f15e68", "image": "quay.io/jcmoraisjr/haproxy-ingress:v0.9.1", "imageID": "docker-pullable://quay.io/jcmoraisjr/haproxy-ingress@sha256:406705945c949a3efa9ad33cc21b3f643f45debeb0a54c61066a6c104e404d91", "lastState": {"terminated": {"containerID": "docker://850370238f0fb7ddab9e6eca8231373a813b6b36ddb86a59a81189363995fdf2", "exitCode": 2, "finishedAt": "2021-07-07T14:24:44Z", "reason": "Error", "startedAt": "2021-07-07T14:24:15Z"}}, "name": "haproxy-ingress", "ready": true, "restartCount": 4, "started": true, "state": {"running": {"startedAt": "2021-07-07T14:24:45Z"}}}], "hostIP": "45.32.124.125", "phase": "Running", "podIP": "45.32.124.125", "podIPs": [{"ip": "45.32.124.125"}], "qosClass": "BestEffort", "startTime": "2021-07-01T03:27:50Z"}}]}
+META: ran handlers
+META: ran handlers
+
+PLAY [ansible_provisioners] ****************************************************
+META: ran handlers
+
+TASK [Remove build directory] **************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/deploy-network.yaml:17
+changed: [localhost] => {"changed": true, "path": "./build", "state": "absent"}
+
+TASK [Create namespace and Vault auth for each organization] *******************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/deploy-network.yaml:23
+
+TASK [Checking if the namespace org1-net already exists] ***********************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/namespace_vaultauth/tasks/main.yaml:6
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/k8_component : Check Namespace org1-net is created] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/k8_component/tasks/main.yaml:7
+ok: [localhost] => {"changed": false, "resources": [{"apiVersion": "v1", "kind": "Namespace", "metadata": {"creationTimestamp": "2021-07-01T03:58:09Z", "labels": {"kubernetes.io/metadata.name": "org1-net"}, "managedFields": [{"apiVersion": "v1", "fieldsType": "FieldsV1", "fieldsV1": {"f:metadata": {"f:labels": {".": {}, "f:kubernetes.io/metadata.name": {}}}}, "manager": "kubectl-create", "operation": "Update", "time": "2021-07-01T03:58:09Z"}], "name": "org1-net", "resourceVersion": "5863", "uid": "33bc39c2-c4b6-4f00-be56-52a8b15c0d5a"}, "spec": {"finalizers": ["kubernetes"]}, "status": {"phase": "Active"}}]}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/k8_component : Wait for Namespace org1-net] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/k8_component/tasks/main.yaml:17
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/k8_component : Wait for Namespace org1-net] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/k8_component/tasks/main.yaml:32
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/k8_component : Wait for Namespace org1-net] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/k8_component/tasks/main.yaml:45
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [create/namespace_vaultauth : Set Variable] *******************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/namespace_vaultauth/tasks/main.yaml:17
+ok: [localhost] => {"ansible_facts": {"get_namespace": {"changed": false, "failed": false, "resources": [{"apiVersion": "v1", "kind": "Namespace", "metadata": {"creationTimestamp": "2021-07-01T03:58:09Z", "labels": {"kubernetes.io/metadata.name": "org1-net"}, "managedFields": [{"apiVersion": "v1", "fieldsType": "FieldsV1", "fieldsV1": {"f:metadata": {"f:labels": {".": {}, "f:kubernetes.io/metadata.name": {}}}}, "manager": "kubectl-create", "operation": "Update", "time": "2021-07-01T03:58:09Z"}], "name": "org1-net", "resourceVersion": "5863", "uid": "33bc39c2-c4b6-4f00-be56-52a8b15c0d5a"}, "spec": {"finalizers": ["kubernetes"]}, "status": {"phase": "Active"}}]}}, "changed": false}
+
+TASK [Create namespaces] *******************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/namespace_vaultauth/tasks/main.yaml:24
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [Create vault reviewer service account for Organizations] *****************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/namespace_vaultauth/tasks/main.yaml:38
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [Create vault auth service account for Organizations] *********************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/namespace_vaultauth/tasks/main.yaml:52
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [Create clusterrolebinding for Ordrers] ***********************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/namespace_vaultauth/tasks/main.yaml:66
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [Git Push] ****************************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/namespace_vaultauth/tasks/main.yaml:74
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/git_push : Check if directory: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../../ exists] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/git_push/tasks/main.yaml:3
+ok: [localhost] => {"changed": false, "gid": 0, "group": "root", "mode": "0755", "owner": "root", "path": "/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../../", "size": 4096, "state": "directory", "uid": 0}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/git_push : Execute git push for ssh] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/git_push/tasks/main.yaml:9
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/git_push : Execute git push for https] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/git_push/tasks/main.yaml:35
