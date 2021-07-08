@@ -462,3 +462,393 @@ skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result w
 
 TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/git_push : Execute git push for https] ***
 task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/git_push/tasks/main.yaml:35
+fatal: [localhost]: FAILED! => {"changed": true, "cmd": "cd \"/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../../\"\necho \"---------------GIT PUSH---------------\"\ngit config user.email cogangsekhongthua1994@gmail.com\ngit config user.name hungphamqs94\ngit --git-dir=/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../..//.git add -A .\n\n# To ignore a directory add it add reset path\nreset_path=platforms/hyperledger-fabric/configuration\nif [ -n \"$reset_path\" ]; then\n    git --git-dir=/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../..//.git reset \"platforms/hyperledger-fabric/configuration\"\nfi  \n\ngit --git-dir=/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../..//.git commit -s -m \"[ci skip] Pushing deployment files for namespace, service accounts and clusterrolebinding\" || true\ngit --git-dir=/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../..//.git push https://hungphamqs94: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@github.com/hungphamqs94/blockchain-automation-framework.git HEAD:main\n", "delta": "0:00:01.328273", "end": "2021-07-08 23:54:27.302593", "msg": "non-zero return code", "rc": 128, "start": "2021-07-08 23:54:25.974320", "stderr": "remote: Permission to hungphamqs94/blockchain-automation-framework.git denied to hungphamqs94.\nfatal: unable to access 'https://hungphamqs94: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@github.com/hungphamqs94/blockchain-automation-framework.git/': The requested URL returned error: 403", "stderr_lines": ["remote: Permission to hungphamqs94/blockchain-automation-framework.git denied to hungphamqs94.", "fatal: unable to access 'https://hungphamqs94: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@github.com/hungphamqs94/blockchain-automation-framework.git/': The requested URL returned error: 403"], "stdout": "---------------GIT PUSH---------------\nUnstaged changes after reset:\nM\tplatforms/hyperledger-fabric/configuration/roles/create/configtx/templates/configtxOrg.tpl\nM\tplatforms/hyperledger-fabric/configuration/roles/create/configtx/templates/configtxProfile.tpl\nM\tplatforms/hyperledger-fabric/configuration/roles/create/crypto_script/templates/orderer_organisation_script.tpl\nM\tplatforms/hyperledger-fabric/configuration/roles/create/crypto_script/templates/orderer_script.tpl\nM\tplatforms/hyperledger-fabric/configuration/roles/create/crypto_script/templates/organisation_script.tpl\nM\tplatforms/hyperledger-fabric/configuration/roles/setup/vault_kubernetes/tasks/main.yaml\n[main 64924eb] [ci skip] Pushing deployment files for namespace, service accounts and clusterrolebinding\n 1 file changed, 464 insertions(+)\n create mode 100644 log.txt", "stdout_lines": ["---------------GIT PUSH---------------", "Unstaged changes after reset:", "M\tplatforms/hyperledger-fabric/configuration/roles/create/configtx/templates/configtxOrg.tpl", "M\tplatforms/hyperledger-fabric/configuration/roles/create/configtx/templates/configtxProfile.tpl", "M\tplatforms/hyperledger-fabric/configuration/roles/create/crypto_script/templates/orderer_organisation_script.tpl", "M\tplatforms/hyperledger-fabric/configuration/roles/create/crypto_script/templates/orderer_script.tpl", "M\tplatforms/hyperledger-fabric/configuration/roles/create/crypto_script/templates/organisation_script.tpl", "M\tplatforms/hyperledger-fabric/configuration/roles/setup/vault_kubernetes/tasks/main.yaml", "[main 64924eb] [ci skip] Pushing deployment files for namespace, service accounts and clusterrolebinding", " 1 file changed, 464 insertions(+)", " create mode 100644 log.txt"]}
+...ignoring
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/git_push : Output for SSH gitpush] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/git_push/tasks/main.yaml:59
+skipping: [localhost] => {}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/git_push : Error for SSH gitpush] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/git_push/tasks/main.yaml:68
+skipping: [localhost] => {}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/git_push : Output for gitpush] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/git_push/tasks/main.yaml:78
+ok: [localhost] => {
+    "msg": [
+        "---------------GIT PUSH---------------", 
+        "Unstaged changes after reset:", 
+        "M\tplatforms/hyperledger-fabric/configuration/roles/create/configtx/templates/configtxOrg.tpl", 
+        "M\tplatforms/hyperledger-fabric/configuration/roles/create/configtx/templates/configtxProfile.tpl", 
+        "M\tplatforms/hyperledger-fabric/configuration/roles/create/crypto_script/templates/orderer_organisation_script.tpl", 
+        "M\tplatforms/hyperledger-fabric/configuration/roles/create/crypto_script/templates/orderer_script.tpl", 
+        "M\tplatforms/hyperledger-fabric/configuration/roles/create/crypto_script/templates/organisation_script.tpl", 
+        "M\tplatforms/hyperledger-fabric/configuration/roles/setup/vault_kubernetes/tasks/main.yaml", 
+        "[main 64924eb] [ci skip] Pushing deployment files for namespace, service accounts and clusterrolebinding", 
+        " 1 file changed, 464 insertions(+)", 
+        " create mode 100644 log.txt"
+    ]
+}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/git_push : Error for git_push] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/git_push/tasks/main.yaml:86
+ok: [localhost] => {
+    "msg": [
+        "remote: Permission to hungphamqs94/blockchain-automation-framework.git denied to hungphamqs94.", 
+        "fatal: unable to access 'https://hungphamqs94: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@github.com/hungphamqs94/blockchain-automation-framework.git/': The requested URL returned error: 403"
+    ]
+}
+
+TASK [Checking for the org1-net-role-tokenreview-binding] **********************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/namespace_vaultauth/tasks/main.yaml:86
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [Including the check for ServiceAccount vault-reviewer in org1-net] *******
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/namespace_vaultauth/tasks/main.yaml:99
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/k8_component : Check ServiceAccount vault-reviewer is created] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/k8_component/tasks/main.yaml:7
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/k8_component : Wait for ServiceAccount vault-reviewer] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/k8_component/tasks/main.yaml:17
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/k8_component : Wait for ServiceAccount vault-reviewer] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/k8_component/tasks/main.yaml:32
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/k8_component : Wait for ServiceAccount vault-reviewer] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/k8_component/tasks/main.yaml:45
+ok: [localhost] => {"attempts": 1, "changed": false, "resources": [{"apiVersion": "v1", "kind": "ServiceAccount", "metadata": {"annotations": {"kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"ServiceAccount\",\"metadata\":{\"annotations\":{},\"name\":\"vault-reviewer\",\"namespace\":\"org1-net\"}}\n"}, "creationTimestamp": "2021-07-01T03:58:17Z", "managedFields": [{"apiVersion": "v1", "fieldsType": "FieldsV1", "fieldsV1": {"f:secrets": {".": {}, "k:{\"name\":\"vault-reviewer-token-6lq2w\"}": {".": {}, "f:name": {}}}}, "manager": "kube-controller-manager", "operation": "Update", "time": "2021-07-01T03:58:17Z"}, {"apiVersion": "v1", "fieldsType": "FieldsV1", "fieldsV1": {"f:metadata": {"f:annotations": {".": {}, "f:kubectl.kubernetes.io/last-applied-configuration": {}}}}, "manager": "kubectl-client-side-apply", "operation": "Update", "time": "2021-07-01T03:58:17Z"}], "name": "vault-reviewer", "namespace": "org1-net", "resourceVersion": "5880", "uid": "d368f1d1-26a6-4b7d-8fc5-aeae30593c07"}, "secrets": [{"name": "vault-reviewer-token-6lq2w"}]}]}
+
+TASK [Including the check for ServiceAccount vault-auth in org1-net] ***********
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/namespace_vaultauth/tasks/main.yaml:111
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/k8_component : Check ServiceAccount vault-auth is created] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/k8_component/tasks/main.yaml:7
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/k8_component : Wait for ServiceAccount vault-auth] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/k8_component/tasks/main.yaml:17
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/k8_component : Wait for ServiceAccount vault-auth] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/k8_component/tasks/main.yaml:32
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/k8_component : Wait for ServiceAccount vault-auth] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/k8_component/tasks/main.yaml:45
+ok: [localhost] => {"attempts": 1, "changed": false, "resources": [{"apiVersion": "v1", "kind": "ServiceAccount", "metadata": {"annotations": {"kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"ServiceAccount\",\"metadata\":{\"annotations\":{},\"name\":\"vault-auth\",\"namespace\":\"org1-net\"}}\n"}, "creationTimestamp": "2021-07-01T04:30:35Z", "managedFields": [{"apiVersion": "v1", "fieldsType": "FieldsV1", "fieldsV1": {"f:secrets": {".": {}, "k:{\"name\":\"vault-auth-token-8fp76\"}": {".": {}, "f:name": {}}}}, "manager": "kube-controller-manager", "operation": "Update", "time": "2021-07-01T04:30:35Z"}, {"apiVersion": "v1", "fieldsType": "FieldsV1", "fieldsV1": {"f:metadata": {"f:annotations": {".": {}, "f:kubectl.kubernetes.io/last-applied-configuration": {}}}}, "manager": "kubectl-client-side-apply", "operation": "Update", "time": "2021-07-01T04:30:35Z"}], "name": "vault-auth", "namespace": "org1-net", "resourceVersion": "8469", "uid": "4a8fef0b-5b30-4618-83b7-cce6ebf0c68f"}, "secrets": [{"name": "vault-auth-token-8fp76"}]}]}
+
+TASK [Setup Vault Kubernetes for each organization] ****************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/deploy-network.yaml:34
+
+TASK [Waiting for the namespace org1-net to be created] ************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/setup/vault_kubernetes/tasks/main.yaml:7
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/k8_component : Check Namespace org1-net is created] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/k8_component/tasks/main.yaml:7
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/k8_component : Wait for Namespace org1-net] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/k8_component/tasks/main.yaml:17
+ok: [localhost] => {"attempts": 1, "changed": false, "resources": [{"apiVersion": "v1", "kind": "Namespace", "metadata": {"creationTimestamp": "2021-07-01T03:58:09Z", "labels": {"kubernetes.io/metadata.name": "org1-net"}, "managedFields": [{"apiVersion": "v1", "fieldsType": "FieldsV1", "fieldsV1": {"f:metadata": {"f:labels": {".": {}, "f:kubernetes.io/metadata.name": {}}}}, "manager": "kubectl-create", "operation": "Update", "time": "2021-07-01T03:58:09Z"}], "name": "org1-net", "resourceVersion": "5863", "uid": "33bc39c2-c4b6-4f00-be56-52a8b15c0d5a"}, "spec": {"finalizers": ["kubernetes"]}, "status": {"phase": "Active"}}]}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/k8_component : Wait for Namespace org1-net] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/k8_component/tasks/main.yaml:32
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/k8_component : Wait for Namespace org1-net] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/k8_component/tasks/main.yaml:45
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [Creating the build directory] ********************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/setup/vault_kubernetes/tasks/main.yaml:18
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/setup : check if dir exists or not] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:3
+ok: [localhost] => {"changed": false, "stat": {"exists": false}}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/setup : Ensures dir exists] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:11
+changed: [localhost] => {"changed": true, "gid": 0, "group": "root", "mode": "0755", "owner": "root", "path": "./build", "size": 4096, "state": "directory", "uid": 0}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/setup : Check if Kubernetes-auth already created for Organization] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:20
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/setup : Check if policy exists] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:30
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [Checking if the vault path already exists] *******************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/setup/vault_kubernetes/tasks/main.yaml:26
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/setup : check if dir exists or not] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:3
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/setup : Ensures dir exists] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:11
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/setup : Check if Kubernetes-auth already created for Organization] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:20
+changed: [localhost] => {"changed": true, "cmd": "vault auth list --format json | jq \"to_entries[] | select(.value.restricted|not) | .key\"\n", "delta": "0:00:00.185305", "end": "2021-07-08 23:54:33.521079", "rc": 0, "start": "2021-07-08 23:54:33.335774", "stderr": "", "stderr_lines": [], "stdout": "\"devorg1-net-auth/\"\n\"kubernetes/\"\n\"token/\"", "stdout_lines": ["\"devorg1-net-auth/\"", "\"kubernetes/\"", "\"token/\""]}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/setup : Check if policy exists] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:30
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/vault_kubernetes : Set Variable] ***********************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/setup/vault_kubernetes/tasks/main.yaml:32
+ok: [localhost] => {"ansible_facts": {"auth_list": {"changed": true, "cmd": "vault auth list --format json | jq \"to_entries[] | select(.value.restricted|not) | .key\"\n", "delta": "0:00:00.185305", "end": "2021-07-08 23:54:33.521079", "failed": false, "rc": 0, "start": "2021-07-08 23:54:33.335774", "stderr": "", "stderr_lines": [], "stdout": "\"devorg1-net-auth/\"\n\"kubernetes/\"\n\"token/\"", "stdout_lines": ["\"devorg1-net-auth/\"", "\"kubernetes/\"", "\"token/\""]}}, "changed": false}
+
+TASK [setup/vault_kubernetes : set_fact] ***************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/setup/vault_kubernetes/tasks/main.yaml:37
+ok: [localhost] => {"ansible_facts": {"component_auth_temp": "\"devorg1-net-auth/\"", "vault_auth_status": false}, "changed": false}
+
+TASK [setup/vault_kubernetes : set_fact] ***************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/setup/vault_kubernetes/tasks/main.yaml:42
+ok: [localhost] => (item="devorg1-net-auth/") => {"ansible_facts": {"vault_auth_status": true}, "ansible_loop_var": "itemx", "changed": false, "itemx": "\"devorg1-net-auth/\""}
+skipping: [localhost] => (item="kubernetes/")  => {"ansible_loop_var": "itemx", "changed": false, "itemx": "\"kubernetes/\"", "skip_reason": "Conditional result was False"}
+skipping: [localhost] => (item="token/")  => {"ansible_loop_var": "itemx", "changed": false, "itemx": "\"token/\"", "skip_reason": "Conditional result was False"}
+
+TASK [setup/vault_kubernetes : Enable and configure Kubernetes-auth for Organization] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/setup/vault_kubernetes/tasks/main.yaml:52
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/vault_kubernetes : Get Kubernetes cert files for organizations] ****
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/setup/vault_kubernetes/tasks/main.yaml:64
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/vault_kubernetes : Write reviewer token for Organisations] *********
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/setup/vault_kubernetes/tasks/main.yaml:72
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [Checking if the vault policies already exists] ***************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/setup/vault_kubernetes/tasks/main.yaml:82
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/setup : check if dir exists or not] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:3
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/setup : Ensures dir exists] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:11
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/setup : Check if Kubernetes-auth already created for Organization] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:20
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/setup : Check if policy exists] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:30
+changed: [localhost] => {"changed": true, "cmd": "vault policy read vault-crypto-orderer-org1-net-ro\n", "delta": "0:00:00.184605", "end": "2021-07-08 23:54:34.896767", "rc": 0, "start": "2021-07-08 23:54:34.712162", "stderr": "", "stderr_lines": [], "stdout": "path \"my-secrets/crypto/ordererOrganizations/org1-net/*\" {\n    capabilities = [\"read\", \"list\"]\n}\npath \"my-secrets/*\" {\n    capabilities = [\"list\"]\n}\npath \"my-secrets/crypto/peerOrganizations/*\" {\n    capabilities = [\"deny\"]\n}\npath \"my-secrets/credentials/org1-net/*\" {\n    capabilities = [\"read\", \"list\"]\n}", "stdout_lines": ["path \"my-secrets/crypto/ordererOrganizations/org1-net/*\" {", "    capabilities = [\"read\", \"list\"]", "}", "path \"my-secrets/*\" {", "    capabilities = [\"list\"]", "}", "path \"my-secrets/crypto/peerOrganizations/*\" {", "    capabilities = [\"deny\"]", "}", "path \"my-secrets/credentials/org1-net/*\" {", "    capabilities = [\"read\", \"list\"]", "}"]}
+
+TASK [setup/vault_kubernetes : Create policy for Orderer Access Control] *******
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/setup/vault_kubernetes/tasks/main.yaml:92
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/vault_kubernetes : Create policy for Organisations Access Control] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/setup/vault_kubernetes/tasks/main.yaml:104
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/vault_kubernetes : Write Policy to Vault] **************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/setup/vault_kubernetes/tasks/main.yaml:116
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [setup/vault_kubernetes : Create Vault auth role] *************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/setup/vault_kubernetes/tasks/main.yaml:125
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [Checking if the docker credentials already exists] ***********************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/setup/vault_kubernetes/tasks/main.yaml:134
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/setup : check if dir exists or not] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:3
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/setup : Ensures dir exists] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:11
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/setup : Check if Kubernetes-auth already created for Organization] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:20
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/setup : Check if policy exists] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:30
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [Create storageclass for each organization] *******************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/deploy-network.yaml:46
+
+TASK [Checking if the storage class org1sc already exists] *********************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/storageclass/tasks/main.yaml:6
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/k8_component : Check StorageClass org1sc is created] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/k8_component/tasks/main.yaml:7
+ok: [localhost] => {"changed": false, "resources": [{"apiVersion": "storage.k8s.io/v1", "kind": "StorageClass", "metadata": {"annotations": {"kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"storage.k8s.io/v1\",\"kind\":\"StorageClass\",\"metadata\":{\"annotations\":{},\"name\":\"org1sc\"},\"provisioner\":\"kubernetes.io/no-provisioner\",\"volumeBindingMode\":\"WaitForFirstConsumer\"}\n"}, "creationTimestamp": "2021-07-01T06:39:26Z", "managedFields": [{"apiVersion": "storage.k8s.io/v1", "fieldsType": "FieldsV1", "fieldsV1": {"f:metadata": {"f:annotations": {".": {}, "f:kubectl.kubernetes.io/last-applied-configuration": {}}}, "f:provisioner": {}, "f:reclaimPolicy": {}, "f:volumeBindingMode": {}}, "manager": "kubectl-client-side-apply", "operation": "Update", "time": "2021-07-01T06:39:26Z"}], "name": "org1sc", "resourceVersion": "18775", "uid": "6ea7e0ab-a9c9-4f0d-9fa6-91aa880040ce"}, "provisioner": "kubernetes.io/no-provisioner", "reclaimPolicy": "Delete", "volumeBindingMode": "WaitForFirstConsumer"}]}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/k8_component : Wait for StorageClass org1sc] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/k8_component/tasks/main.yaml:17
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/k8_component : Wait for StorageClass org1sc] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/k8_component/tasks/main.yaml:32
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/k8_component : Wait for StorageClass org1sc] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/k8_component/tasks/main.yaml:45
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [create/storageclass : Set Variable] **************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/storageclass/tasks/main.yaml:14
+ok: [localhost] => {"ansible_facts": {"get_sc": {"changed": false, "failed": false, "resources": [{"apiVersion": "storage.k8s.io/v1", "kind": "StorageClass", "metadata": {"annotations": {"kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"storage.k8s.io/v1\",\"kind\":\"StorageClass\",\"metadata\":{\"annotations\":{},\"name\":\"org1sc\"},\"provisioner\":\"kubernetes.io/no-provisioner\",\"volumeBindingMode\":\"WaitForFirstConsumer\"}\n"}, "creationTimestamp": "2021-07-01T06:39:26Z", "managedFields": [{"apiVersion": "storage.k8s.io/v1", "fieldsType": "FieldsV1", "fieldsV1": {"f:metadata": {"f:annotations": {".": {}, "f:kubectl.kubernetes.io/last-applied-configuration": {}}}, "f:provisioner": {}, "f:reclaimPolicy": {}, "f:volumeBindingMode": {}}, "manager": "kubectl-client-side-apply", "operation": "Update", "time": "2021-07-01T06:39:26Z"}], "name": "org1sc", "resourceVersion": "18775", "uid": "6ea7e0ab-a9c9-4f0d-9fa6-91aa880040ce"}, "provisioner": "kubernetes.io/no-provisioner", "reclaimPolicy": "Delete", "volumeBindingMode": "WaitForFirstConsumer"}]}}, "changed": false}
+
+TASK [creating /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../../platforms/hyperledger-fabric/releases/dev/org1/orderer directory] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/storageclass/tasks/main.yaml:19
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [create/storageclass : Create Storage Class value file for orderers] ******
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/storageclass/tasks/main.yaml:29
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [create/storageclass : Create Storage Class value file for Organizations] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/storageclass/tasks/main.yaml:41
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [Git Push] ****************************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/storageclass/tasks/main.yaml:51
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [Waiting for the creation of org1sc storage class] ************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/storageclass/tasks/main.yaml:64
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [Create CA server for each organization] **********************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/deploy-network.yaml:57
+
+TASK [create/ca-server : Check if ca certs already created] ********************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/ca-server/tasks/main.yaml:6
+ok: [localhost] => {"changed": false, "cmd": "vault kv get -field=ca.org1-net-cert.pem my-secrets/crypto/ordererOrganizations/org1-net/ca\n", "delta": "0:00:00.155028", "end": "2021-07-08 23:54:38.135420", "rc": 0, "start": "2021-07-08 23:54:37.980392", "stderr": "", "stderr_lines": [], "stdout": "-----BEGIN CERTIFICATE-----\nMIIB+TCCAZ6gAwIBAgIUAnUJx5KmcL6K3M8+rhW+G3KfKx0wCgYIKoZIzj0EAwIw\nWjELMAkGA1UEBhMCVVMxETAPBgNVBAgMCE5ldyBZb3JrMREwDwYDVQQHDAhOZXcg\nWW9yazEOMAwGA1UECgwFU3RvcmUxFTATBgNVBAMMDGNhLnN0b3JlLW5ldDAeFw0y\nMTA3MDgwMTQ1MDZaFw0yNDA0MjcwMTQ1MDZaMFoxCzAJBgNVBAYTAlVTMREwDwYD\nVQQIDAhOZXcgWW9yazERMA8GA1UEBwwITmV3IFlvcmsxDjAMBgNVBAoMBVN0b3Jl\nMRUwEwYDVQQDDAxjYS5zdG9yZS1uZXQwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNC\nAARxmlSOw3ZxUGQ9JLfvHEUSCU6fE1tJ6EY3ozj5yYw45DSDkW7rZ0Z26pNAl2wS\nFvpWatJSba/F7TEEsNXl17BRo0IwQDAPBgNVHRMBAf8EBTADAQH/MA4GA1UdDwEB\n/wQEAwIBpjAdBgNVHQ4EFgQU5WUL0LiyteeXd5iSbG4WEIMPpQowCgYIKoZIzj0E\nAwIDSQAwRgIhAP9sa2VP+pA1RWi687XdiCPJEeNWjSENmjy/Jj/rvK8yAiEAy1rz\ngdbf5WydxX31YxFZpFDQL4hUyPrD4q/yvQBfp2Q=\n-----END CERTIFICATE-----", "stdout_lines": ["-----BEGIN CERTIFICATE-----", "MIIB+TCCAZ6gAwIBAgIUAnUJx5KmcL6K3M8+rhW+G3KfKx0wCgYIKoZIzj0EAwIw", "WjELMAkGA1UEBhMCVVMxETAPBgNVBAgMCE5ldyBZb3JrMREwDwYDVQQHDAhOZXcg", "WW9yazEOMAwGA1UECgwFU3RvcmUxFTATBgNVBAMMDGNhLnN0b3JlLW5ldDAeFw0y", "MTA3MDgwMTQ1MDZaFw0yNDA0MjcwMTQ1MDZaMFoxCzAJBgNVBAYTAlVTMREwDwYD", "VQQIDAhOZXcgWW9yazERMA8GA1UEBwwITmV3IFlvcmsxDjAMBgNVBAoMBVN0b3Jl", "MRUwEwYDVQQDDAxjYS5zdG9yZS1uZXQwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNC", "AARxmlSOw3ZxUGQ9JLfvHEUSCU6fE1tJ6EY3ozj5yYw45DSDkW7rZ0Z26pNAl2wS", "FvpWatJSba/F7TEEsNXl17BRo0IwQDAPBgNVHRMBAf8EBTADAQH/MA4GA1UdDwEB", "/wQEAwIBpjAdBgNVHQ4EFgQU5WUL0LiyteeXd5iSbG4WEIMPpQowCgYIKoZIzj0E", "AwIDSQAwRgIhAP9sa2VP+pA1RWi687XdiCPJEeNWjSENmjy/Jj/rvK8yAiEAy1rz", "gdbf5WydxX31YxFZpFDQL4hUyPrD4q/yvQBfp2Q=", "-----END CERTIFICATE-----"]}
+
+TASK [creating the directory ./build/crypto-config/ordererOrganizations/org1-net/ca] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/ca-server/tasks/main.yaml:18
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/setup : check if dir exists or not] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:3
+ok: [localhost] => {"changed": false, "stat": {"exists": false}}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/setup : Ensures dir exists] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:11
+changed: [localhost] => {"changed": true, "gid": 0, "group": "root", "mode": "0755", "owner": "root", "path": "./build/crypto-config/ordererOrganizations/org1-net/ca", "size": 4096, "state": "directory", "uid": 0}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/setup : Check if Kubernetes-auth already created for Organization] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:20
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/setup : Check if policy exists] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:30
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [create/ca-server : Get ca certs and key] *********************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/ca-server/tasks/main.yaml:25
+changed: [localhost] => {"changed": true, "cmd": "vault kv get -field=ca.org1-net-cert.pem my-secrets/crypto/ordererOrganizations/org1-net/ca > ca.org1-net-cert.pem\nmv ca.org1-net-cert.pem ./build/crypto-config/ordererOrganizations/org1-net/ca/\nvault kv get -field=org1-net-CA.key my-secrets/crypto/ordererOrganizations/org1-net/ca > org1-net-CA.key\nmv org1-net-CA.key ./build/crypto-config/ordererOrganizations/org1-net/ca/\n", "delta": "0:00:00.405885", "end": "2021-07-08 23:54:39.837352", "rc": 0, "start": "2021-07-08 23:54:39.431467", "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
+
+TASK [create/ca-server : Check if the CA.key is already present] ***************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/ca-server/tasks/main.yaml:39
+ok: [localhost] => {"changed": false, "stat": {"atime": 1625788479.613089, "attr_flags": "e", "attributes": ["extents"], "block_size": 4096, "blocks": 8, "charset": "us-ascii", "checksum": "00dd160d7a6b50b367a6af95305ddde796680b7a", "ctime": 1625788479.8290892, "dev": 64513, "device_type": 0, "executable": false, "exists": true, "gid": 0, "gr_name": "root", "inode": 1024008, "isblk": false, "ischr": false, "isdir": false, "isfifo": false, "isgid": false, "islnk": false, "isreg": true, "issock": false, "isuid": false, "mimetype": "text/plain", "mode": "0644", "mtime": 1625788479.8290892, "nlink": 1, "path": "./build/crypto-config/ordererOrganizations/org1-net/ca/org1-net-CA.key", "pw_name": "root", "readable": true, "rgrp": true, "roth": true, "rusr": true, "size": 226, "uid": 0, "version": "2373203335", "wgrp": false, "woth": false, "writeable": true, "wusr": true, "xgrp": false, "xoth": false, "xusr": false}}
+
+TASK [create/ca-server : Generate the CA certificate] **************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/ca-server/tasks/main.yaml:46
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [create/ca-server : Copy the crypto material to Vault] ********************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/ca-server/tasks/main.yaml:55
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [create/ca-server : Check if ca admin credentials already created] ********
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/ca-server/tasks/main.yaml:65
+ok: [localhost] => {"changed": false, "cmd": "vault kv get my-secrets/credentials/org1-net/ca/org1\n", "delta": "0:00:00.170369", "end": "2021-07-08 23:54:40.867831", "rc": 0, "start": "2021-07-08 23:54:40.697462", "stderr": "", "stderr_lines": [], "stdout": "==== Data ====\nKey     Value\n---     -----\nuser    org1-adminpw", "stdout_lines": ["==== Data ====", "Key     Value", "---     -----", "user    org1-adminpw"]}
+
+TASK [create/ca-server : Write the ca server admin credentials to Vault] *******
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/ca-server/tasks/main.yaml:77
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [create/ca-server : Check Ambassador cred exists] *************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/ca-server/tasks/main.yaml:87
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [create/ca-server : Create the Ambassador credentials] ********************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/ca-server/tasks/main.yaml:100
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [Create CA server values for Orderer] *************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/ca-server/tasks/main.yaml:109
+
+TASK [helm_component : Ensures /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../../platforms/hyperledger-fabric/releases/dev/org1/ca dir exists] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/helm_component/tasks/main.yaml:8
+ok: [localhost] => {"changed": false, "gid": 0, "group": "root", "mode": "0755", "owner": "root", "path": "/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../../platforms/hyperledger-fabric/releases/dev/org1/ca", "size": 4096, "state": "directory", "uid": 0}
+
+TASK [helm_component : create value file for org1-net] *************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/helm_component/tasks/main.yaml:17
+ok: [localhost] => {"changed": false, "checksum": "992a19dc7a216c0d58f7503ddf7c546226b7f4a7", "dest": "/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../../platforms/hyperledger-fabric/releases/dev/org1/ca/org1-net.yaml", "gid": 0, "group": "root", "mode": "0644", "owner": "root", "path": "/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../../platforms/hyperledger-fabric/releases/dev/org1/ca/org1-net.yaml", "size": 1366, "state": "file", "uid": 0}
+
+TASK [Helm lint] ***************************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/helm_component/tasks/main.yaml:26
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/helm_lint : Check if value file exists] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/helm_lint/tasks/main.yaml:10
+ok: [localhost] => {"changed": false, "stat": {"atime": 1625732153.6568758, "attr_flags": "e", "attributes": ["extents"], "block_size": 4096, "blocks": 8, "charset": "us-ascii", "checksum": "992a19dc7a216c0d58f7503ddf7c546226b7f4a7", "ctime": 1625121605.0959322, "dev": 64513, "device_type": 0, "executable": false, "exists": true, "gid": 0, "gr_name": "root", "inode": 6153572, "isblk": false, "ischr": false, "isdir": false, "isfifo": false, "isgid": false, "islnk": false, "isreg": true, "issock": false, "isuid": false, "mimetype": "text/plain", "mode": "0644", "mtime": 1625121604.8039312, "nlink": 1, "path": "/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../../platforms/hyperledger-fabric/releases/dev/org1/ca/org1-net.yaml", "pw_name": "root", "readable": true, "rgrp": true, "roth": true, "rusr": true, "size": 1366, "uid": 0, "version": "627021454", "wgrp": false, "woth": false, "writeable": true, "wusr": true, "xgrp": false, "xoth": false, "xusr": false}}
+
+TASK [Check or create test directory] ******************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/helm_lint/tasks/main.yaml:16
+
+TASK [../../shared/configuration/roles/check/setup : check if dir exists or not] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:3
+ok: [localhost] => {"changed": false, "stat": {"exists": false}}
+
+TASK [../../shared/configuration/roles/check/setup : Ensures dir exists] *******
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:11
+changed: [localhost] => {"changed": true, "gid": 0, "group": "root", "mode": "0755", "owner": "root", "path": "./build/test", "size": 4096, "state": "directory", "uid": 0}
+
+TASK [../../shared/configuration/roles/check/setup : Check if Kubernetes-auth already created for Organization] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:20
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [../../shared/configuration/roles/check/setup : Check if policy exists] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/setup/tasks/main.yaml:30
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/helm_lint : Load file into memory] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/helm_lint/tasks/main.yaml:25
+ok: [localhost] => {"ansible_facts": {"apiVersion": "helm.fluxcd.io/v1", "kind": "HelmRelease", "metadata": {"annotations": {"fluxcd.io/automated": "false"}, "name": "org1-net-ca", "namespace": "org1-net"}, "spec": {"chart": {"git": "https://github.com/hungphamqs94/blockchain-automation-framework.git", "path": "platforms/hyperledger-fabric/charts/ca", "ref": "main"}, "releaseName": "org1-net-ca", "values": {"annotations": {"pvc": null, "service": [{"example1": "example2"}]}, "deployment": {"annotations": null}, "metadata": {"images": {"alpineutils": "index.docker.io/hyperledgerlabs/alpine-utils:1.0", "ca": "hyperledger/fabric-ca:1.4.8"}, "namespace": "org1-net"}, "proxy": {"external_url_suffix": "org1.example.com", "provider": "haproxy", "type": "orderer"}, "server": {"admin": "org1-admin", "name": "ca", "tlsstatus": true}, "service": {"ports": {"tcp": {"port": 7054}}, "servicetype": "ClusterIP"}, "storage": {"storageclassname": "org1sc", "storagesize": "512Mi"}, "vault": {"address": "http://45.32.124.125:8200", "authpath": "devorg1-net-auth", "imagesecretname": "regcred", "role": "vault-role", "secretadminpass": "my-secrets/credentials/org1-net/ca/org1?user", "secretcert": "my-secrets/crypto/ordererOrganizations/org1-net/ca?ca.org1-net-cert.pem", "secretkey": "my-secrets/crypto/ordererOrganizations/org1-net/ca?org1-net-CA.key", "serviceaccountname": "vault-auth"}}}}, "ansible_included_var_files": ["/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/releases/dev/org1/ca/org1-net.yaml"], "changed": false}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/helm_lint : Create value file] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/helm_lint/tasks/main.yaml:30
+changed: [localhost] => {"changed": true, "checksum": "d8837cb237b48290d996d4566986cf52d207551d", "dest": "./build/test/org1-net-ca.yaml", "gid": 0, "group": "root", "md5sum": "68e60933645f7989b3d5ba0e10e652a0", "mode": "0644", "owner": "root", "size": 951, "src": "/root/.ansible/tmp/ansible-tmp-1625788483.6-7878-157457163749195/source", "state": "file", "uid": 0}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/helm_lint : Run helm lint] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/helm_lint/tasks/main.yaml:35
+changed: [localhost] => {"changed": true, "cmd": "helm lint -f \"./build/test/org1-net-ca.yaml\" \"/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../../platforms/hyperledger-fabric/charts/ca\"\n", "delta": "0:00:00.101464", "end": "2021-07-08 23:54:44.780214", "rc": 0, "start": "2021-07-08 23:54:44.678750", "stderr": "coalesce.go:196: warning: cannot overwrite table with non table for service (map[])\ncoalesce.go:196: warning: cannot overwrite table with non table for service (map[])", "stderr_lines": ["coalesce.go:196: warning: cannot overwrite table with non table for service (map[])", "coalesce.go:196: warning: cannot overwrite table with non table for service (map[])"], "stdout": "==> Linting /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../../platforms/hyperledger-fabric/charts/ca\n[INFO] Chart.yaml: icon is recommended\n\n1 chart(s) linted, 0 chart(s) failed", "stdout_lines": ["==> Linting /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../../platforms/hyperledger-fabric/charts/ca", "[INFO] Chart.yaml: icon is recommended", "", "1 chart(s) linted, 0 chart(s) failed"]}
+
+TASK [Create CA server values organizations] ***********************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/ca-server/tasks/main.yaml:125
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [Git Push] ****************************************************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/ca-server/tasks/main.yaml:140
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/git_push : Check if directory: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../../ exists] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/git_push/tasks/main.yaml:3
+ok: [localhost] => {"changed": false, "gid": 0, "group": "root", "mode": "0755", "owner": "root", "path": "/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../../", "size": 4096, "state": "directory", "uid": 0}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/git_push : Execute git push for ssh] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/git_push/tasks/main.yaml:9
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/git_push : Execute git push for https] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/git_push/tasks/main.yaml:35
