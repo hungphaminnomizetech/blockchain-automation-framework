@@ -8,7 +8,7 @@ metadata:
 spec:
   releaseName: org1-net-ca
   chart:
-    git: https://github.com/hungphamqs94/blockchain-automation-framework.git
+    git: https://github.com/hungphaminnomizetech/blockchain-automation-framework.git
     ref: main
     path: platforms/hyperledger-fabric/charts/ca    
   values:
