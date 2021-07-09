@@ -852,3 +852,61 @@ skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result w
 
 TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/git_push : Execute git push for https] ***
 task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/git_push/tasks/main.yaml:35
+fatal: [localhost]: FAILED! => {"changed": true, "cmd": "cd \"/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../../\"\necho \"---------------GIT PUSH---------------\"\ngit config user.email cogangsekhongthua1994@gmail.com\ngit config user.name hungphamqs94\ngit --git-dir=/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../..//.git add -A .\n\n# To ignore a directory add it add reset path\nreset_path=platforms/hyperledger-fabric/configuration\nif [ -n \"$reset_path\" ]; then\n    git --git-dir=/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../..//.git reset \"platforms/hyperledger-fabric/configuration\"\nfi  \n\ngit --git-dir=/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../..//.git commit -s -m \"[ci skip] Pushing CA server files\" || true\ngit --git-dir=/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../..//.git push https://hungphamqs94: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@github.com/hungphamqs94/blockchain-automation-framework.git HEAD:main\n", "delta": "0:00:01.271562", "end": "2021-07-08 23:54:47.045585", "msg": "non-zero return code", "rc": 128, "start": "2021-07-08 23:54:45.774023", "stderr": "remote: Permission to hungphamqs94/blockchain-automation-framework.git denied to hungphamqs94.\nfatal: unable to access 'https://hungphamqs94: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@github.com/hungphamqs94/blockchain-automation-framework.git/': The requested URL returned error: 403", "stderr_lines": ["remote: Permission to hungphamqs94/blockchain-automation-framework.git denied to hungphamqs94.", "fatal: unable to access 'https://hungphamqs94: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@github.com/hungphamqs94/blockchain-automation-framework.git/': The requested URL returned error: 403"], "stdout": "---------------GIT PUSH---------------\nUnstaged changes after reset:\nM\tplatforms/hyperledger-fabric/configuration/roles/create/configtx/templates/configtxOrg.tpl\nM\tplatforms/hyperledger-fabric/configuration/roles/create/configtx/templates/configtxProfile.tpl\nM\tplatforms/hyperledger-fabric/configuration/roles/create/crypto_script/templates/orderer_organisation_script.tpl\nM\tplatforms/hyperledger-fabric/configuration/roles/create/crypto_script/templates/orderer_script.tpl\nM\tplatforms/hyperledger-fabric/configuration/roles/create/crypto_script/templates/organisation_script.tpl\nM\tplatforms/hyperledger-fabric/configuration/roles/setup/vault_kubernetes/tasks/main.yaml\n[main d845680] [ci skip] Pushing CA server files\n 1 file changed, 390 insertions(+)", "stdout_lines": ["---------------GIT PUSH---------------", "Unstaged changes after reset:", "M\tplatforms/hyperledger-fabric/configuration/roles/create/configtx/templates/configtxOrg.tpl", "M\tplatforms/hyperledger-fabric/configuration/roles/create/configtx/templates/configtxProfile.tpl", "M\tplatforms/hyperledger-fabric/configuration/roles/create/crypto_script/templates/orderer_organisation_script.tpl", "M\tplatforms/hyperledger-fabric/configuration/roles/create/crypto_script/templates/orderer_script.tpl", "M\tplatforms/hyperledger-fabric/configuration/roles/create/crypto_script/templates/organisation_script.tpl", "M\tplatforms/hyperledger-fabric/configuration/roles/setup/vault_kubernetes/tasks/main.yaml", "[main d845680] [ci skip] Pushing CA server files", " 1 file changed, 390 insertions(+)"]}
+...ignoring
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/git_push : Output for SSH gitpush] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/git_push/tasks/main.yaml:59
+skipping: [localhost] => {}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/git_push : Error for SSH gitpush] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/git_push/tasks/main.yaml:68
+skipping: [localhost] => {}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/git_push : Output for gitpush] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/git_push/tasks/main.yaml:78
+ok: [localhost] => {
+    "msg": [
+        "---------------GIT PUSH---------------", 
+        "Unstaged changes after reset:", 
+        "M\tplatforms/hyperledger-fabric/configuration/roles/create/configtx/templates/configtxOrg.tpl", 
+        "M\tplatforms/hyperledger-fabric/configuration/roles/create/configtx/templates/configtxProfile.tpl", 
+        "M\tplatforms/hyperledger-fabric/configuration/roles/create/crypto_script/templates/orderer_organisation_script.tpl", 
+        "M\tplatforms/hyperledger-fabric/configuration/roles/create/crypto_script/templates/orderer_script.tpl", 
+        "M\tplatforms/hyperledger-fabric/configuration/roles/create/crypto_script/templates/organisation_script.tpl", 
+        "M\tplatforms/hyperledger-fabric/configuration/roles/setup/vault_kubernetes/tasks/main.yaml", 
+        "[main d845680] [ci skip] Pushing CA server files", 
+        " 1 file changed, 390 insertions(+)"
+    ]
+}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/git_push : Error for git_push] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/git_push/tasks/main.yaml:86
+ok: [localhost] => {
+    "msg": [
+        "remote: Permission to hungphamqs94/blockchain-automation-framework.git denied to hungphamqs94.", 
+        "fatal: unable to access 'https://hungphamqs94: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@github.com/hungphamqs94/blockchain-automation-framework.git/': The requested URL returned error: 403"
+    ]
+}
+
+TASK [Create CA tools for each organization] ***********************************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/deploy-network.yaml:75
+
+TASK [waiting for the CA server to be created in org1-net] *********************
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/roles/create/ca-tools/tasks/main.yaml:6
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/helm_component : Wait for Pod ca in org1-net] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/helm_component/tasks/main.yaml:5
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/helm_component : Check for {{ job_title }} job on {{ component_name }}] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/helm_component/tasks/main.yaml:22
+skipping: [localhost] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [/home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/hyperledger-fabric/configuration/../../shared/configuration/roles/check/helm_component : Wait for Pod ca in org1-net] ***
+task path: /home/tiennguyen/projects/hyperledger/blockchain-automation-framework/platforms/shared/configuration/roles/check/helm_component/tasks/main.yaml:36
+FAILED - RETRYING: Wait for Pod ca in org1-net (33 retries left).
+FAILED - RETRYING: Wait for Pod ca in org1-net (32 retries left).
+FAILED - RETRYING: Wait for Pod ca in org1-net (31 retries left).
+FAILED - RETRYING: Wait for Pod ca in org1-net (30 retries left).
+FAILED - RETRYING: Wait for Pod ca in org1-net (29 retries left).
